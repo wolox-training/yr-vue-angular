@@ -1,0 +1,31 @@
+@import "../variables/fonts";
+@import "../variables/colors";
+
+.button {
+  border-radius: 6px;
+  margin: 16px auto;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.form-primary {
+  background-color: $wx-green;
+  border: 2.5px solid $wx-green;
+  color: $white;
+  font-size: $button-primary;
+
+  &:hover {
+    background-color: $white;
+    color: $wx-green;
+  }
+}
+
+.form-links-primary {
+  background-color: $bg-gray;
+  color: $wx-green;
+}
+
+.line-form {
+  background-color: $bg-gray;
+}

@@ -1,0 +1,33 @@
+@import "../variables/fonts";
+@import "../variables/colors";
+
+.container {
+  background-color: $bg-gray;
+  border-top: 8px solid $wx-blue;
+  margin: 50px auto;
+  width: 360px;
+}
+
+.form-container {
+  margin-bottom: 20px;
+  padding: 25px;
+}
+
+.input-container {
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px 0 25px 0;
+}
+
+.input-text-label {
+  align-self: flex-start;
+  color: $black;
+  font-size: $input-text;
+  margin-bottom: 4px;
+}
+
+.input-text-content {
+  border-radius: 7px;
+  padding: 10px;
+  width: 100%;
+}
