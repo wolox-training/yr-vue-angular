@@ -20,3 +20,13 @@ export const FIELDS_SIGNUP = [
     label: "Confirmación de Password",
   },
 ];
+export const FIELDS_LOGIN = [
+  {
+    id: "email",
+    label: "Email",
+  },
+  {
+    id: "password",
+    label: "Password",
+  },
+];
