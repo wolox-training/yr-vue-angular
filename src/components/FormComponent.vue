@@ -1,13 +1,13 @@
 <template lang="pug">
 .container
   img.logo-image(alt='Wolox Books Logo' src='../assets/logo_full_color.svg')
-  form.form-container(@submit.prevent="handleAction")
+  form.form-container(@submit.prevent='handleAction')
     .input-container(
       v-for='(field, index) in fieldsArray'
       :key='`${index}-${field.id}`')      
         label.input-text-label(:for='field.id')
           | {{ field.label }}
-        input.input-text-content(:id='field.id' v-model='formData[field.id]' )
+        input.input-text-content(:id='field.id' v-model='formData[field.id]')
     slot
 </template>
 

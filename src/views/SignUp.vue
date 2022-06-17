@@ -1,7 +1,7 @@
 <template lang="pug">
 form-component(:fieldsArray='fieldsArray' :handleAction='handleCreateUser' :formData='userNew' )
   slot
-    button.button.form-primary
+    button.button.form-primary(type='submit')
       |  Sign Up
     hr.line-form
     router-link.button.form-primary.form-links-primary(to="/login")
