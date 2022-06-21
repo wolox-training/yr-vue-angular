@@ -7,7 +7,7 @@
       :key='`${index}-${field.id}`')      
         label.input-text-label(:for='field.id')
           | {{ field.label }}
-        input.input-text-content(:id='field.id' v-model='formData[field.id]')
+        input.input-text-content(:id='field.id' :type='field.type' v-model='formData[field.id]')
     slot
 </template>
 
