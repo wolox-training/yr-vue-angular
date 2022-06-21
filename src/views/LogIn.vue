@@ -1,5 +1,5 @@
 <template lang="pug">
-form-component(:fieldsArray='fieldsArray' :handleAction='handleLogin' :formData='userData' )
+form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handleAction='handleLogin' )
   slot
     button.button.form-primary(type='submit')
       |  Login
@@ -19,9 +19,10 @@ export default {
 
   setup() {
     const userData = ref({});
-    const handleLogin = async () => {
-      console.log(userData.value);
+    const handleLogin = async (value) => {
+      console.log(value);
     };
+
     return { userData, fieldsArray: FIELDS_LOGIN, handleLogin };
   },
 };
