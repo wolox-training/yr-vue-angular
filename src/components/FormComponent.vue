@@ -1,6 +1,6 @@
 <template lang="pug">
 .container
-  img.logo-image(alt='Wolox Books Logo' src='../assets/logo_full_color.svg')
+  img.logo.logo-image(alt='Wolox Books Logo' src='../assets/logo_full_color.svg')
   form.form-container(@submit.prevent='handleAction')
     .input-container(
       v-for='(field, index) in fieldsArray'

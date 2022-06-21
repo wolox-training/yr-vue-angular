@@ -17,12 +17,12 @@ export const FIELDS_SIGNUP = [
   {
     id: "password",
     label: "Password",
-    type: "Password",
+    type: "password",
   },
   {
     id: "password_confirmation",
     label: "Confirmación de Password",
-    type: "Password",
+    type: "password",
   },
 ];
 export const FIELDS_LOGIN = [

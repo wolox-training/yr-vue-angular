@@ -1,10 +1,10 @@
 <template lang="pug">
-form-component(:fieldsArray='fieldsArray' :handleAction='handleLogin' :formData='userData' )
+form-component(:fields-array='fieldsArray' :handle-action='handleLogin' :form-data='userData' )
   slot
     button.button.form-primary(type='submit')
-      |  Login
+      | Login
     hr.line-form
-    router-link.button.form-primary.form-links-primary(to="/sign-up")
+    router-link.button.form-primary.form-links-primary(to='/sign-up')
       | Sign Up
 </template>
 
