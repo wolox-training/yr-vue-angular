@@ -1,4 +1,4 @@
-import { rulesFields } from "./RulesFieldsUsers";
+// import { rulesFields } from "./RulesFieldsUsers";
 const formFields = {
   email: {
     label: "Email",
@@ -21,13 +21,13 @@ const formFields = {
   password: {
     label: "Password",
     name: "password",
-    type: "Password",
+    type: "text",
   },
 
   password_confirmation: {
     label: "Confirmación de Password",
     name: "password_confirmation",
-    type: "Password",
+    type: "text",
   },
 };
 
@@ -39,10 +39,12 @@ export const FIELDS_SIGNUP = {
     formFields.password,
     formFields.password_confirmation,
   ],
-  rules: rulesFields,
+  // rules: rulesFields,
+  rules: "signUp",
 };
 
 export const FIELDS_LOGIN = {
   fields: [formFields.email, formFields.password],
-  rules: { email: rulesFields.email, password: rulesFields.password },
+  // rules: { email: rulesFields.email, password: rulesFields.password },
+  rules: "login",
 };

@@ -20,5 +20,5 @@ export const rulesFields = {
     ),
     min: minLength(5),
   },
-  password_confirmation: { required, sameAsRawValue: sameAs("password") },
+  password_confirmation: { required, sameAs: sameAs(state.value.password) },
 };

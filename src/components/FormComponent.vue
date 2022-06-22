@@ -21,19 +21,52 @@
 
 <script>
 import useVuelidate from "@vuelidate/core";
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { required, email, sameAs, minLength, helpers } from "@vuelidate/validators";
 
 export default {
   name: "FormComponent",
   props: {
     fields: { type: Array, default: () => [] },
-    rules: { type: Object, default: () => {} },
+    rules: { type: String, default: "" },
     handleAction: { type: Function, default: () => null },
   },
 
   setup(props) {
     const state = ref(props.fields);
-    const v$ = useVuelidate(props.rules, state);
+    const password = helpers.regex(/^[a-zA-Z]{3}/, /\d/);
+    const rules = computed(() => {
+      if (props.rules === "signUp") {
+        return {
+          email: { required, email },
+          first_name: { required, min: minLength(5) },
+          last_name: { required },
+          password: {
+            required,
+            pass: helpers.withMessage(
+              "This field must contain characters and numbers",
+              password
+            ),
+            min: minLength(5),
+          },
+          password_confirmation: { required, sameAs: sameAs(state.value.password) },
+        };
+      } else {
+        return {
+          email: { required, email },
+          password: {
+            required,
+            pass: helpers.withMessage(
+              "This field must contain characters and numbers",
+              password
+            ),
+            min: minLength(5),
+          },
+        };
+      }
+    });
+
+    const v$ = useVuelidate(rules, state);
     const handleValidate = async () => {
       if (!(await v$.value.$validate())) return;
       props.handleAction(formData.value);
