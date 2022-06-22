@@ -1,20 +1,20 @@
 <template lang="pug">
-form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handleAction='handleLogin' )
+form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handle-action='handleLogin')
   slot
     button.button.form-primary(type='submit')
-      |  Login
+      | Login
     hr.line-form
-    router-link.button.form-primary.form-links-primary(to="/sign-up")
+    router-link.button.form-primary.form-links-primary(to='/sign-up')
       | Sign Up
 </template>
 
 <script>
-import { ref } from "vue";
-import { FIELDS_LOGIN } from "@/constants/Forms";
-import FormComponent from "@/components/FormComponent";
+import { ref } from 'vue';
+import { FIELDS_LOGIN } from '@/constants/Forms';
+import FormComponent from '@/components/FormComponent';
 
 export default {
-  name: "LogIn",
+  name: 'LogIn',
   components: { FormComponent },
 
   setup() {

@@ -4,7 +4,7 @@
   form.form-container(@submit.prevent='handleValidate')
     .input-container(
       v-for='(field, index) in state'
-      :class='{ valid: !v$[field.name].$error , error: v$[field.name].$errors.length>0 }' 
+      :class='{valid: !v$[field.name].$error , error: v$[field.name].$errors.length>0}' 
       :key='`${index}-${field.name}`')  
         label.input-text-label(:for='field.name')
           | {{ field.label }}
@@ -20,23 +20,24 @@
 </template>
 
 <script>
-import useVuelidate from "@vuelidate/core";
-import { ref, computed } from "vue";
-import { required, email, sameAs, minLength, helpers } from "@vuelidate/validators";
+import useVuelidate from '@vuelidate/core';
+import { ref, computed } from 'vue';
+import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
 
 export default {
-  name: "FormComponent",
+  name: 'FormComponent',
   props: {
     fields: { type: Array, default: () => [] },
-    rules: { type: String, default: "" },
+    rules: { type: String, default: '' },
     handleAction: { type: Function, default: () => null },
   },
 
   setup(props) {
     const state = ref(props.fields);
+    const formData = ref({});
     const password = helpers.regex(/^[a-zA-Z]{3}/, /\d/);
     const rules = computed(() => {
-      if (props.rules === "signUp") {
+      if (props.rules === 'signUp') {
         return {
           email: { required, email },
           first_name: { required, min: minLength(5) },
@@ -44,7 +45,7 @@ export default {
           password: {
             required,
             pass: helpers.withMessage(
-              "This field must contain characters and numbers",
+              'This field must contain characters and numbers',
               password
             ),
             min: minLength(5),
@@ -57,7 +58,7 @@ export default {
           password: {
             required,
             pass: helpers.withMessage(
-              "This field must contain characters and numbers",
+              'This field must contain characters and numbers',
               password
             ),
             min: minLength(5),
@@ -71,10 +72,10 @@ export default {
       if (!(await v$.value.$validate())) return;
       props.handleAction(formData.value);
     };
-    const formData = ref({});
     const returnValue = (value, field) => {
       formData.value[field] = value;
     };
+
     return { v$, state, handleValidate, returnValue };
   },
 };
