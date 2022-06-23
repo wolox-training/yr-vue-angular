@@ -15,4 +15,9 @@ export default [
     component: () =>
       import(/* webpackChunkName: 'SingUp' */ '../views/LogIn.vue'),
   },
+  {
+    path: '/home',
+    name: 'Home',
+    component: () => import(/* webpackChunkName: 'Home'*/ '../views/Home.vue'),
+  }
 ];

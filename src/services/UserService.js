@@ -1,4 +1,5 @@
 import { api } from '@/config/api';
+import { userToken } from '@/utils/session';
 let response = []
 
 export async function signUp(data) {
@@ -10,14 +11,7 @@ export async function signUp(data) {
 }
 export async function signIn(data) {
     response = await api.post('/users/sign_in', data).then(res => {
-        const token = res.headers['access-token']
-        const { client, uid } = res.headers
-        console.log('success')
-        console.log(`
-            Token = ${token}
-            Client = ${client}
-            Uid = ${uid}
-        `);
+        userToken(res.headers['access-token'])
         return res.data
     }).catch(error => error)
 }
