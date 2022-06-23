@@ -20,15 +20,15 @@
 </template>
 
 <script>
-import useVuelidate from '@vuelidate/core';
-import { ref, computed } from 'vue';
-import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
+import useVuelidate from "@vuelidate/core";
+import { ref, computed } from "vue";
+import { required, email, sameAs, minLength, helpers } from "@vuelidate/validators";
 
 export default {
-  name: 'FormComponent',
+  name: "FormComponent",
   props: {
     fields: { type: Array, default: () => [] },
-    rules: { type: String, default: '' },
+    rules: { type: String, default: "" },
     handleAction: { type: Function, default: () => null },
   },
 
@@ -47,13 +47,13 @@ export default {
         password: {
           required,
           pass: helpers.withMessage(
-            'This field must contain characters and numbers',
+            "This field must contain characters and numbers",
             password
           ),
           min: minLength(5),
         },
-        ...(props.rules === 'signUp' ? rulesSignUp : {})
-      }
+        ...(props.rules === "signUp" ? rulesSignUp : {}),
+      };
     });
 
     const v$ = useVuelidate(rules, state);
@@ -64,9 +64,9 @@ export default {
     const returnValue = (value, field) => {
       formData.value[field] = value;
     };
-    const classValid = (field) => (!v$.value[field].$error ? 'valid' : 'error');
-    const logoImg = require('@/assets/logo_full_color.svg')
-    return { v$, state, handleValidate, returnValue, classValid ,logoImg};
+    const classValid = (field) => (!v$.value[field].$error ? "valid" : "error");
+    const logoImg = require("@/assets/logo_full_color.svg");
+    return { v$, state, handleValidate, returnValue, classValid, logoImg };
   },
 };
 </script>

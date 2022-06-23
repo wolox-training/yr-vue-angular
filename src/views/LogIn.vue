@@ -9,18 +9,19 @@ form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handle-a
 </template>
 
 <script>
-import { ref } from 'vue';
-import { FIELDS_LOGIN } from '@/constants/Forms';
-import FormComponent from '@/components/FormComponent';
+import { ref } from "vue";
+import { FIELDS_LOGIN } from "@/constants/Forms";
+import FormComponent from "@/components/FormComponent";
+import { signIn } from "@/services/UserService";
 
 export default {
-  name: 'LogIn',
+  name: "LogIn",
   components: { FormComponent },
 
   setup() {
     const userData = ref({});
     const handleLogin = async (value) => {
-      console.log(value);
+      await signIn(value);
     };
 
     return { userData, fieldsArray: FIELDS_LOGIN, handleLogin };
