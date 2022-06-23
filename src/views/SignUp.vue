@@ -9,13 +9,13 @@ form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handle-a
 </template>
 
 <script>
-import { ref } from "vue";
-import { FIELDS_SIGNUP } from "@/constants/Forms";
-import FormComponent from "@/components/FormComponent";
-import { signUp } from "@/services/UserService";
+import { ref } from 'vue';
+import { FIELDS_SIGNUP } from '@/constants/Forms';
+import FormComponent from '@/components/FormComponent';
+import { signUp } from '@/services/UserService';
 
 export default {
-  name: "SingUp",
+  name: 'SingUp',
   components: { FormComponent },
 
   setup() {
@@ -27,7 +27,7 @@ export default {
         email: value.email,
         password: value.password,
         password_confirmation: value.passwordConfirmation,
-        locale: "en",
+        locale: 'en',
       };
       await signUp(data);
     };

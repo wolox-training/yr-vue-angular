@@ -9,13 +9,13 @@ form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handle-a
 </template>
 
 <script>
-import { ref } from "vue";
-import { FIELDS_LOGIN } from "@/constants/Forms";
-import FormComponent from "@/components/FormComponent";
-import { signIn } from "@/services/UserService";
+import { ref } from 'vue';
+import { FIELDS_LOGIN } from '@/constants/Forms';
+import FormComponent from '@/components/FormComponent';
+import { signIn } from '@/services/UserService';
 
 export default {
-  name: "LogIn",
+  name: 'LogIn',
   components: { FormComponent },
 
   setup() {
