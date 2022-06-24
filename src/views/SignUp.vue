@@ -20,7 +20,7 @@ export default {
 
   setup() {
     const userNew = ref({});
-    const handleCreateUser = async (value) => {
+    const handleCreateUser = (value) => {
       let data = {
         first_name: value.firstName,
         last_name: value.lastName,
@@ -29,7 +29,11 @@ export default {
         password_confirmation: value.passwordConfirmation,
         locale: 'en',
       };
-      await signUp(data);
+      signUp(data)
+        .then(() => {
+          console.log('success');
+        })
+        .catch((error) => console.log(error));
     };
 
     return {userNew, fieldsArray: FIELDS_SIGNUP, handleCreateUser};

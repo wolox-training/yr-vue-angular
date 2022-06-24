@@ -20,8 +20,19 @@ export default {
 
   setup() {
     const userData = ref({});
-    const handleLogin = async (value) => {
-      await signIn(value);
+    const handleLogin = (value) => {
+      signIn(value)
+        .then((res) => {
+          const token = res.headers['access-token'];
+          const {client, uid} = res.headers;
+          console.log('success');
+          console.log(`
+            Token = ${token}
+            Client = ${client}
+            Uid = ${uid}
+        `);
+        })
+        .catch((error) => console.log(error));
     };
 
     return {userData, fieldsArray: FIELDS_LOGIN, handleLogin};

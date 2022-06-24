@@ -40,10 +40,7 @@ export default {
       const rulesSignUp = {
         firstName: {required, min: minLength(5)},
         lastName: {required},
-        passwordConfirmation: {
-          required,
-          sameAs: sameAs(state.value.password),
-        },
+        passwordConfirmation: {required, sameAs: sameAs(state.value.password)},
       };
       return {
         email: {required, email},

@@ -1,6 +1,5 @@
 import { create } from 'apisauce';
-const URI = '/api/v1/'
 
 export const api = create({
-    baseURL: `https://books-training-rails.herokuapp.com${URI}`,
+    baseURL: process.env.VUE_APP_BACKEND_URL
 })
