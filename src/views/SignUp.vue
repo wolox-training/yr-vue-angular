@@ -9,18 +9,18 @@ form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handle-a
 </template>
 
 <script>
-import { ref } from 'vue';
-import { FIELDS_SIGNUP } from '@/constants/Forms';
+import {ref} from 'vue';
+import {FIELDS_SIGNUP} from '@/constants/Forms';
 import FormComponent from '@/components/FormComponent';
-import { signUp } from '@/services/UserService';
+import {signUp} from '@/services/UserService';
 
 export default {
   name: 'SingUp',
-  components: { FormComponent },
+  components: {FormComponent},
 
   setup() {
     const userNew = ref({});
-    const handleCreateUser = async (value) => {
+    const handleCreateUser = (value) => {
       let data = {
         first_name: value.firstName,
         last_name: value.lastName,
@@ -29,10 +29,14 @@ export default {
         password_confirmation: value.passwordConfirmation,
         locale: 'en',
       };
-      await signUp(data);
+      signUp(data)
+        .then(() => {
+          console.log('success');
+        })
+        .catch((error) => console.log(error));
     };
 
-    return { userNew, fieldsArray: FIELDS_SIGNUP, handleCreateUser };
+    return {userNew, fieldsArray: FIELDS_SIGNUP, handleCreateUser};
   },
 };
 </script>
