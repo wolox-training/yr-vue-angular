@@ -9,20 +9,20 @@ form-component(:fields-array='fieldsArray' :handle-action='handleCreateUser' :fo
 </template>
 
 <script>
-import { ref } from "vue";
-import { FIELDS_SIGNUP } from "@/constants/Forms";
-import FormComponent from "@/components/FormComponent";
+import {ref} from 'vue';
+import {FIELDS_SIGNUP} from '@/constants/Forms';
+import FormComponent from '@/components/FormComponent';
 
 export default {
-  name: "SingUp",
-  components: { FormComponent },
+  name: 'SingUp',
+  components: {FormComponent},
 
   setup() {
     const userNew = ref({});
     const handleCreateUser = () => {
       console.log(userNew.value);
     };
-    return { userNew, fieldsArray: FIELDS_SIGNUP, handleCreateUser };
+    return {userNew, fieldsArray: FIELDS_SIGNUP, handleCreateUser};
   },
 };
 </script>

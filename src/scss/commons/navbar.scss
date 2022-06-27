@@ -1,0 +1,24 @@
+@import '../variables/fonts';
+@import '../variables/colors';
+
+.navbar {
+    border-top: 8px solid $wx-blue;
+    background-color: $white;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
+    display: flex;
+    height: 70px;
+    justify-content: space-between;
+    padding: 0 246px 0 246px;
+}
+
+.navbar-logo {
+    width: 200px;
+}
+
+.logout {
+    color: $black;
+    font-size: $navbar-container;
+    font-family: Roboto;
+    margin: auto 0;
+    width: 63px;
+}
