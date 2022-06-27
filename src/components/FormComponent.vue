@@ -21,15 +21,15 @@
 
 <script>
 import useVuelidate from '@vuelidate/core';
-import { ref, computed } from 'vue';
-import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators';
+import {ref, computed} from 'vue';
+import {required, email, sameAs, minLength, helpers} from '@vuelidate/validators';
 
 export default {
   name: 'FormComponent',
   props: {
-    fields: { type: Array, default: () => [] },
-    rules: { type: String, default: '' },
-    handleAction: { type: Function, default: () => null },
+    fields: {type: Array, default: () => []},
+    rules: {type: String, default: ''},
+    handleAction: {type: Function, default: () => null},
   },
 
   setup(props) {
@@ -38,12 +38,12 @@ export default {
     const password = helpers.regex(/^[a-zA-Z]{3}/, /\d/);
     const rules = computed(() => {
       const rulesSignUp = {
-        firstName: { required, min: minLength(5) },
-        lastName: { required },
-        passwordConfirmation: { required, sameAs: sameAs(state.value.password) },
+        firstName: {required, min: minLength(5)},
+        lastName: {required},
+        passwordConfirmation: {required, sameAs: sameAs(state.value.password)},
       };
       return {
-        email: { required, email },
+        email: {required, email},
         password: {
           required,
           pass: helpers.withMessage(
@@ -52,21 +52,23 @@ export default {
           ),
           min: minLength(5),
         },
-        ...(props.rules === 'signUp' ? rulesSignUp : {})
-      }
+        ...(props.rules === 'signUp' ? rulesSignUp : {}),
+      };
     });
 
     const v$ = useVuelidate(rules, state);
     const handleValidate = async () => {
-      if (!(await v$.value.$validate())) return;
-      props.handleAction(formData.value);
+      const isValid = await v$.value.$validate();
+      if (isValid) {
+        props.handleAction(formData.value);
+      }
     };
     const returnValue = (value, field) => {
       formData.value[field] = value;
     };
     const classValid = (field) => (!v$.value[field].$error ? 'valid' : 'error');
-    const logoImg = require('@/assets/logo_full_color.svg')
-    return { v$, state, handleValidate, returnValue, classValid ,logoImg};
+    const logoImg = require('@/assets/logo_full_color.svg');
+    return {v$, state, handleValidate, returnValue, classValid, logoImg};
   },
 };
 </script>
