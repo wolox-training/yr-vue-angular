@@ -1,18 +1,18 @@
 export default [
   {
-    path: "/",
-    redirect: "LogIn",
+    path: '/',
+    redirect: 'LogIn',
   },
   {
-    path: "/sign-up",
-    name: "SignUp",
+    path: '/sign-up',
+    name: 'SignUp',
     component: () =>
-      import(/* webpackChunkName: "SingUp" */ "../views/SignUp.vue"),
+      import(/* webpackChunkName: 'SingUp' */ '../views/SignUp.vue'),
   },
   {
-    path: "/login",
-    name: "LogIn",
+    path: '/login',
+    name: 'LogIn',
     component: () =>
-      import(/* webpackChunkName: "SingUp" */ "../views/LogIn.vue"),
+      import(/* webpackChunkName: 'SingUp' */ '../views/LogIn.vue'),
   },
 ];

@@ -1,39 +1,47 @@
-export const FIELDS_SIGNUP = [
-  {
-    id: "first_name",
-    label: "Nombre",
-    type: "text",
+const formFields = {
+  email: {
+    label: 'Email',
+    name: 'email',
+    type: 'email',
   },
-  {
-    id: "last_name",
-    label: "Apellido",
-    type: "text",
+
+  lastName: {
+    label: 'Apellido',
+    name: 'lastName',
+    type: 'text',
   },
-  {
-    id: "email",
-    label: "Email",
-    type: "email",
+
+  name: {
+    label: 'Nombre',
+    name: 'firstName',
+    type: 'text',
   },
-  {
-    id: "password",
-    label: "Password",
-    type: "password",
+
+  password: {
+    label: 'Password',
+    name: 'password',
+    type: 'password',
   },
-  {
-    id: "password_confirmation",
-    label: "Confirmación de Password",
-    type: "password",
+
+  passwordConfirmation: {
+    label: 'Confirmación de Password',
+    name: 'passwordConfirmation',
+    type: 'password',
   },
-];
-export const FIELDS_LOGIN = [
-  {
-    id: "email",
-    label: "Email",
-    type: "text",
-  },
-  {
-    id: "password",
-    label: "Password",
-    type: "Password",
-  },
-];
+};
+
+export const FIELDS_SIGNUP = {
+  fields: [
+    formFields.name,
+    formFields.lastName,
+    formFields.email,
+    formFields.password,
+    formFields.passwordConfirmation,
+  ],
+  rules: 'signUp',
+};
+
+export const FIELDS_LOGIN = {
+  fields: [formFields.email, formFields.password],
+  rules: 'login',
+};

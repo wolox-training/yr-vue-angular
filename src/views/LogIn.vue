@@ -1,5 +1,5 @@
 <template lang="pug">
-form-component(:fields-array='fieldsArray' :handle-action='handleLogin' :form-data='userData' )
+form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handle-action='handleLogin')
   slot
     button.button.form-primary(type='submit')
       | Login
@@ -9,19 +9,20 @@ form-component(:fields-array='fieldsArray' :handle-action='handleLogin' :form-da
 </template>
 
 <script>
-import { ref } from "vue";
-import { FIELDS_LOGIN } from "@/constants/Forms";
-import FormComponent from "@/components/FormComponent";
+import { ref } from 'vue';
+import { FIELDS_LOGIN } from '@/constants/Forms';
+import FormComponent from '@/components/FormComponent';
 
 export default {
-  name: "LogIn",
+  name: 'LogIn',
   components: { FormComponent },
 
   setup() {
     const userData = ref({});
-    const handleLogin = async () => {
-      console.log(userData.value);
+    const handleLogin = async (value) => {
+      console.log(value);
     };
+
     return { userData, fieldsArray: FIELDS_LOGIN, handleLogin };
   },
 };
