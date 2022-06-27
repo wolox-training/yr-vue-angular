@@ -1,5 +1,5 @@
 <template lang="pug">
-form-component(:fields-array='fieldsArray' :handle-action='handleCreateUser' :form-data='userNew' )
+form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handle-action='handleCreateUser')
   slot
     button.button.form-primary(type='submit')
       | Sign Up
@@ -19,8 +19,8 @@ export default {
 
   setup() {
     const userNew = ref({});
-    const handleCreateUser = () => {
-      console.log(userNew.value);
+    const handleCreateUser = (value) => {
+      console.log(value);
     };
     return {userNew, fieldsArray: FIELDS_SIGNUP, handleCreateUser};
   },
