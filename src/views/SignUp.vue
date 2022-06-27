@@ -1,33 +1,28 @@
 <template lang="pug">
-.container
-  img.logo-image(alt='Wolox Books Logo' src='../assets/logo_full_color.svg')
-  form.form-container(@submit.prevent='handleCreateUser')
-    .input-container(
-      v-for='(field, index) in fieldsArray'
-      :key='`${index}-${field.id}`')      
-        label.input-text-label(:for='field.id')
-          | {{ field.label }}
-        input.input-text-content(:id='field.id' v-model='userNew[field.id]')
+form-component(:fields-array='fieldsArray' :handle-action='handleCreateUser' :form-data='userNew' )
+  slot
     button.button.form-primary(type='submit')
       | Sign Up
     hr.line-form
-    router-link.button.form-primary.form-links-primary(to="/login")
+    router-link.button.form-primary.form-links-primary(to='/login')
       | Login
 </template>
 
 <script>
-import { ref } from "vue";
-import { FIELDS_SIGNUP } from "@/constants/Forms";
+import {ref} from 'vue';
+import {FIELDS_SIGNUP} from '@/constants/Forms';
+import FormComponent from '@/components/FormComponent';
 
 export default {
-  name: "SingUp",
+  name: 'SingUp',
+  components: {FormComponent},
+
   setup() {
     const userNew = ref({});
-
     const handleCreateUser = () => {
       console.log(userNew.value);
     };
-    return { userNew, fieldsArray: FIELDS_SIGNUP, handleCreateUser };
+    return {userNew, fieldsArray: FIELDS_SIGNUP, handleCreateUser};
   },
 };
 </script>
