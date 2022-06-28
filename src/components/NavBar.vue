@@ -1,18 +1,20 @@
 <template lang="pug">
 .navbar
   img.navbar-logo(alt='Wolox Books Logo' :src='logoImg')
-  button.logout(@click='handleLogOut')
+  button.logout(@click='handleLogOut' type='button')
     | Logout
 </template>
 
 <script>
-import {inject} from 'vue';
-import {signOff} from '@/utils/session';
+import { inject } from "vue";
+import { signOff } from "@/utils/session";
+
 export default {
   setup() {
-    const logoImg = inject('logoImg');
+    const logoImg = inject("logoImg");
     const handleLogOut = () => signOff();
-    return {logoImg, handleLogOut};
+
+    return { logoImg, handleLogOut };
   },
 };
 </script>
