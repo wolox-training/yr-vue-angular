@@ -20,21 +20,21 @@
 </template>
 
 <script>
-import useVuelidate from "@vuelidate/core";
-import { ref, computed, inject } from "vue";
+import useVuelidate from '@vuelidate/core';
+import { ref, computed, inject } from 'vue';
 import {
   required,
   email,
   sameAs,
   minLength,
   helpers,
-} from "@vuelidate/validators";
+} from '@vuelidate/validators';
 
 export default {
-  name: "FormComponent",
+  name: 'FormComponent',
   props: {
     fields: { type: Array, default: () => [] },
-    rules: { type: String, default: "" },
+    rules: { type: String, default: '' },
     handleAction: { type: Function, default: () => null },
   },
 
@@ -56,26 +56,28 @@ export default {
         password: {
           required,
           pass: helpers.withMessage(
-            "This field must contain characters and numbers",
+            'This field must contain characters and numbers',
             password
           ),
           min: minLength(5),
         },
-        ...(props.rules === "signUp" ? rulesSignUp : {}),
+        ...(props.rules === 'signUp' ? rulesSignUp : {}),
       };
     });
 
     const v$ = useVuelidate(rules, state);
     const handleValidate = async () => {
-      if (!(await v$.value.$validate())) return;
-      props.handleAction(formData.value);
+      const isValid = await v$.value.$validate();
+      if (isValid) {
+        props.handleAction(formData.value);
+      }
     };
     const returnValue = (value, field) => {
       formData.value[field] = value;
     };
-    const classValid = (field) => (!v$.value[field].$error ? "valid" : "error");
-    const logoImg = inject("logoImg");
-    
+    const classValid = (field) => (!v$.value[field].$error ? 'valid' : 'error');
+    const logoImg = inject('logoImg');
+
     return { v$, state, handleValidate, returnValue, classValid, logoImg };
   },
 };
