@@ -58,8 +58,10 @@ export default {
 
     const v$ = useVuelidate(rules, state);
     const handleValidate = async () => {
-      if (!(await v$.value.$validate())) return;
-      props.handleAction(formData.value);
+      const isValid = await v$.value.$validate();
+      if (isValid) {
+        props.handleAction(formData.value);
+      }
     };
     const returnValue = (value, field) => {
       formData.value[field] = value;
