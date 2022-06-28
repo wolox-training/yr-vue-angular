@@ -12,7 +12,8 @@ form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handle-a
 import { ref } from 'vue';
 import { FIELDS_SIGNUP } from '@/constants/Forms';
 import FormComponent from '@/components/FormComponent';
-import { signUp } from '@/services/UserService';
+import {signUp} from '@/services/UserService';
+import router from '@/router';
 
 export default {
   name: 'SingUp',
@@ -30,9 +31,7 @@ export default {
         locale: 'en',
       };
       signUp(data)
-        .then(() => {
-          console.log('success');
-        })
+        .then(() => router.push('LogIn'))
         .catch((error) => console.log(error));
     };
 

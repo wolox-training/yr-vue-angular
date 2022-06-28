@@ -13,6 +13,7 @@ import {ref} from 'vue';
 import {FIELDS_LOGIN} from '@/constants/Forms';
 import FormComponent from '@/components/FormComponent';
 import {signIn} from '@/services/UserService';
+import {userToken} from '@/utils/session';
 
 export default {
   name: 'LogIn',
@@ -24,13 +25,9 @@ export default {
       signIn(value)
         .then((res) => {
           const token = res.headers['access-token'];
-          const {client, uid} = res.headers;
-          console.log('success');
-          console.log(`
-            Token = ${token}
-            Client = ${client}
-            Uid = ${uid}
-        `);
+          if (token) {
+            userToken(token);
+          }
         })
         .catch((error) => console.log(error));
     };
