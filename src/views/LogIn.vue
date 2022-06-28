@@ -26,7 +26,13 @@ export default {
         .then((res) => {
           const token = res.headers['access-token'];
           if (token) {
-            userToken(token);
+            const {client, uid} = res.headers;
+            const infoUser = {
+              'Access-Token': token,
+              Client: client,
+              Uid: uid,
+            };
+            userToken(infoUser);
           }
         })
         .catch((error) => console.log(error));

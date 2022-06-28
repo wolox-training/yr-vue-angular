@@ -12,7 +12,7 @@ export default [
   {
     path: '/login',
     name: 'LogIn',
-    component: () => import(/* webpackChunkName: 'SingUp' */ '../views/LogIn.vue'),
+    component: () => import(/* webpackChunkName: 'LogIn' */ '../views/LogIn.vue'),
     meta: { requireAuth: false }
 
   },

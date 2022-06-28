@@ -25,3 +25,14 @@
   background-color: $bg-gray;
   color: $wx-green;
 }
+
+.cart-add {
+  background: $wx-green;
+  border-radius: 2em;
+  color: $white;
+  float: right;
+  font-size: 1.5em;
+  line-height: 1em;
+  width: 1em;
+  transform: translate(20px, -5px);
+}
