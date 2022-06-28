@@ -8,10 +8,13 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  const authRoutes = ['LogIn', 'SignUp']
   const protectedRoute = to.matched.some(record => record.meta.requireAuth)
   const token = getUserToken()
+  
   if (protectedRoute && !token) next({ name: 'LogIn' })
-  else if (token && (to.name === 'LogIn' || to.name === 'SignUp')) next({ name: 'Home' })
+  else if (token && authRoutes.includes(to.name)) next({ name: 'Home' })
   else next()
 })
+
 export default router;

@@ -1,22 +1,21 @@
 <template lang="pug">
 .container
-	img.logo.logo-image(alt='Wolox Books Logo' :src='logoImg')
-	form.form-container(@submit.prevent='handleValidate')
-		.input-container(
-			v-for='(field, index) in state'
-				:class='classValid(field.name)'
-				:key='`${index}-${field.name}`')  
-					label.input-text-label(:for='field.name')
-						| {{ field.label }}
-					input.input-text-content(
-						:id='field.name' 
-						:type='field.type' 
-						v-model='state[field.name]'
-						@input='returnValue(state[field.name], field.name)'
-						@blur='v$[field.name].$touch')
-					p(v-for='error of v$[field.name].$errors' :key='error.$uid')
-						| {{ error.$message }}
-		slot
+  img.logo.logo-image(alt='Wolox Books Logo' :src='logoImg')
+  form.form-container(@submit.prevent='handleValidate')
+    .input-container(v-for='(field, index) in state'
+        :class='classValid(field.name)'
+        :key='`${index}-${field.name}`')  
+          label.input-text-label(:for='field.name')
+            | {{ field.label }}
+          input.input-text-content(
+            :id='field.name' 
+            :type='field.type' 
+            v-model='state[field.name]'
+            @input='returnValue(state[field.name], field.name)'
+            @blur='v$[field.name].$touch')
+          p(v-for='error of v$[field.name].$errors' :key='error.$uid')
+            | {{ error.$message }}
+    slot
 </template>
 
 <script>
@@ -64,17 +63,20 @@ export default {
         ...(props.rules === 'signUp' ? rulesSignUp : {}),
       };
     });
-
     const v$ = useVuelidate(rules, state);
+    const classValid = (field) => (!v$.value[field].$error ? 'valid' : 'error');
+    const logoImg = inject('logoImg');
+
     const handleValidate = async () => {
-      if (!(await v$.value.$validate())) return;
-      props.handleAction(formData.value);
+      const isValid = await v$.value.$validate();
+      if (isValid) {
+        props.handleAction(formData.value);
+      }
     };
+
     const returnValue = (value, field) => {
       formData.value[field] = value;
     };
-    const classValid = (field) => (!v$.value[field].$error ? 'valid' : 'error');
-    const logoImg = inject('logoImg');
 
     return { v$, state, handleValidate, returnValue, classValid, logoImg };
   },

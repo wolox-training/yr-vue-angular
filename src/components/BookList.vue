@@ -1,7 +1,7 @@
 <template lang="pug">
 .book-search 
   input.book-search-input(v-model='inputSearch' type='search')
-  img.book-icon-search(:src='iconSearch')
+  img.book-icon-search(:src='iconSearch' alt='Search icon')
 .books-container(v-if='booksFiltered')
   router-link.books(
     v-for='book in booksFiltered'

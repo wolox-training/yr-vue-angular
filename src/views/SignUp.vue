@@ -9,15 +9,15 @@ form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handle-a
 </template>
 
 <script>
-import {ref} from 'vue';
-import {FIELDS_SIGNUP} from '@/constants/Forms';
+import { ref } from 'vue';
+import { FIELDS_SIGNUP } from '@/constants/Forms';
 import FormComponent from '@/components/FormComponent';
-import {signUp} from '@/services/UserService';
+import { signUp } from '@/services/UserService';
 import router from '@/router';
 
 export default {
   name: 'SingUp',
-  components: {FormComponent},
+  components: { FormComponent },
 
   setup() {
     const userNew = ref({});
@@ -35,7 +35,7 @@ export default {
         .catch((error) => console.log(error));
     };
 
-    return {userNew, fieldsArray: FIELDS_SIGNUP, handleCreateUser};
+    return { userNew, fieldsArray: FIELDS_SIGNUP, handleCreateUser };
   },
 };
 </script>
