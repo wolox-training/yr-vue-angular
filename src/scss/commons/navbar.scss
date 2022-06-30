@@ -2,23 +2,27 @@
 @import '../variables/colors';
 
 .navbar {
-    border-top: 8px solid $wx-blue;
-    background-color: $white;
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
-    display: flex;
-    height: 70px;
-    justify-content: space-between;
-    padding: 0 246px 0 246px;
+  background-color: $white;
+  border-top: 8px solid $wx-blue;
+  box-shadow: 0 4px 10px 0 $box-shadow-navbar;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  padding: 0 246px 0 246px;
 }
 
 .navbar-logo {
-    width: 200px;
+  width: 200px;
 }
 
 .logout {
-    color: $black;
-    font-size: $navbar-container;
-    font-family: Roboto;
-    margin: auto 0;
-    width: 63px;
+  color: $black;
+  font-size: $navbar-container;
+  margin: auto 0;
+  width: 63px;
+}
+
+.navbar-options {
+  display: flex;
+  align-items: center;
 }

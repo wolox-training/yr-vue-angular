@@ -1,0 +1,27 @@
+@import '../variables/fonts';
+@import '../variables/colors';
+
+.cart {
+  cursor: pointer;
+  display: flex;
+  height: 24px;
+  margin: 0 29px;
+  position: relative;
+  width: 22.31px;
+}
+
+.cart-content-count {
+  align-items: center;
+  background-color: $wx-blue;
+  border-radius: 50%;
+  color: $white;
+  display: flex;
+  font-size: $cart-content-count;
+  height: 15px;
+  justify-content: center;
+  left: 66%;
+  padding: 2px;
+  position: absolute;
+  top: -4px;
+  width: 15px;
+}

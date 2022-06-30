@@ -30,39 +30,38 @@ import route from '@/router';
 
 export default {
   setup() {
-    const idBook = ref(computed(() => router.currentRoute.value.params.idBook));
+    const idBook = computed(() => router.currentRoute.value.params.idBook);
     const book = ref([]);
     const badgeImg = require('@/assets/badge.png');
-    const bookDetail = ref(
-      computed(() => {
-        return [
-          {
-            title: 'Autor del libro:',
-            desciption: book.value.author,
-          },
-          {
-            title: 'Editorial:',
-            desciption: book.value.editor,
-          },
-          {
-            title: 'Año de publicación:',
-            desciption: book.value.year,
-          },
-        ];
-      }),
-    );
-
+    const bookDetail = computed(() => {
+      return [
+        {
+          title: 'Autor del libro:',
+          desciption: book.value.author,
+        },
+        {
+          title: 'Editorial:',
+          desciption: book.value.editor,
+        },
+        {
+          title: 'Año de publicación:',
+          desciption: book.value.year,
+        },
+      ];
+    });
+    
     const handleGoBack = () => route.go(-1);
+
     const handleIsValidBadge = (value) => {
-      return value === 'Piers Anthony' ? true : false;
+      return value === 'Piers Anthony';
     };
 
     watchEffect(() => {
-      idBook.value
-        ? getBookId(idBook.value)
-            .then((res) => (book.value = res.data))
-            .catch((err) => console.log(err))
-        : '';
+      if (idBook.value) {
+        getBookId(idBook.value)
+          .then((res) => (book.value = res.data))
+          .catch((err) => console.log(err));
+      }
     });
 
     return { book, badgeImg, handleGoBack, bookDetail, handleIsValidBadge };

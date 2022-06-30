@@ -3,23 +3,24 @@
   input.book-search-input(v-model='inputSearch' type='search' placeholder='Buscá por título del libro...')
   img.book-icon-search(:src='iconSearch' alt='Search icon')
 .books-container(v-if='booksFiltered')
-  router-link.books(
+  .books(
     v-for='book in booksFiltered'
-    :to='{ path: `/books/${book.id}`}'
     :key='book.id'
   )
-    img.book-cover(:src='book.image_url' :alt='book.title')
-    .book-title
-      | {{ book.title }}
-    .book-author
-      | {{ book.author }}
-    button.cart-add(type='button')
+    router-link(:to='{ path: `/books/${book.id}`}')
+      img.book-cover(:src='book.image_url' :alt='book.title')
+      .book-title
+        | {{ book.title }}
+      .book-author
+        | {{ book.author }}
+    button.cart-add(type='button' @click='handleAddCartBook(book)')
       | +
 </template>
 
 <script>
 import { onMounted, ref, computed } from 'vue';
 import { getBook } from '@/services/BookService';
+import { useStoreCart } from '@/stores/CartStore';
 
 export default {
   name: 'BookList',
@@ -39,6 +40,10 @@ export default {
           : books.value.page,
       ),
     );
+    const cartStore = useStoreCart();
+    const handleAddCartBook = (book) => {
+      cartStore.addItem(book);
+    };
 
     onMounted(() => {
       getBook()
@@ -46,7 +51,7 @@ export default {
         .catch((error) => console.log(error));
     });
 
-    return { booksFiltered, iconSearch, inputSearch };
+    return { booksFiltered, iconSearch, inputSearch, handleAddCartBook };
   },
 };
 </script>

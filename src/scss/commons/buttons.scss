@@ -31,13 +31,15 @@
   background: $wx-green;
   border-radius: 2em;
   color: $white;
-  float: right;
   font-size: $card-button-add;
   height: 32px;
   line-height: 33px;
   text-align: center;
   transform: translate(20px, -5px);
   width: 31px;
+  position: absolute;
+  right: 30px;
+  bottom: 2px;
 }
 
 .book-detail {
@@ -50,8 +52,7 @@
   border: 2.5px solid $wx-green;
   border-radius: 2em;
   height: 20px;
-  margin: 0 12px 0 0;
-  text-align: center;
+  margin: 0 12px;
   width: 20px;
 }
 
