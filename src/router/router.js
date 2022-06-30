@@ -22,4 +22,12 @@ export default [
     component: () => import(/* webpackChunkName: 'Home'*/ '../views/Home.vue'),
     meta: { requireAuth: true }
   }
+  ,
+  {
+    path: '/books/:idBook(\\d+)+',
+    name: 'BooksDetail',
+    component: () => import(/* webpackChunkName: 'BooksDetail'*/ '../views/BooksDetail.vue'),
+    meta: { requireAuth: true }
+
+  }
 ];

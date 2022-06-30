@@ -2,19 +2,22 @@
 .container
   img.logo.logo-image(alt='Wolox Books Logo' :src='logoImg')
   form.form-container(@submit.prevent='handleValidate')
-    .input-container(v-for='(field, index) in state'
-        :class='classValid(field.name)'
-        :key='`${index}-${field.name}`')  
-          label.input-text-label(:for='field.name')
-            | {{ field.label }}
-          input.input-text-content(
-            :id='field.name' 
-            :type='field.type' 
-            v-model='state[field.name]'
-            @input='returnValue(state[field.name], field.name)'
-            @blur='v$[field.name].$touch')
-          p(v-for='error of v$[field.name].$errors' :key='error.$uid')
-            | {{ error.$message }}
+    .input-container(
+      v-for='(field, index) in state'
+      :key='`${index}-${field.name}`'
+      :class='classValid(field.name)'
+    )  
+      label.input-text-label(:for='field.name')
+        | {{ field.label }}
+      input.input-text-content(
+        :id='field.name' 
+        :type='field.type' 
+        v-model='state[field.name]'
+        @input='returnValue(state[field.name], field.name)'
+        @blur='v$[field.name].$touch'
+      )
+      p(v-for='error of v$[field.name].$errors' :key='error.$uid')
+        | {{ error.$message }}
     slot
 </template>
 

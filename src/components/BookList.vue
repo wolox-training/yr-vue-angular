@@ -1,11 +1,11 @@
 <template lang="pug">
 .book-search 
-  input.book-search-input(v-model='inputSearch' type='search')
+  input.book-search-input(v-model='inputSearch' type='search' placeholder='Buscá por título del libro...')
   img.book-icon-search(:src='iconSearch' alt='Search icon')
 .books-container(v-if='booksFiltered')
   router-link.books(
     v-for='book in booksFiltered'
-    :to='{ path: `book/${book.id}`}'
+    :to='{ path: `/books/${book.id}`}'
     :key='book.id'
   )
     img.book-cover(:src='book.image_url' :alt='book.title')

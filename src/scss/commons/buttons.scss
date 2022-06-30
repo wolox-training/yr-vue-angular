@@ -1,5 +1,6 @@
 @import '../variables/fonts';
 @import '../variables/colors';
+@import '../commons/icons.scss';
 
 .button {
   border-radius: 6px;
@@ -31,8 +32,29 @@
   border-radius: 2em;
   color: $white;
   float: right;
-  font-size: 1.5em;
-  line-height: 1em;
+  font-size: $card-button-add;
+  height: 32px;
+  line-height: 33px;
+  text-align: center;
   transform: translate(20px, -5px);
-  width: 1em;
+  width: 31px;
+}
+
+.book-detail {
+  align-items: center;
+  font-size: $book-button-detail;
+  line-height: 24px;
+}
+
+.book-arrow-back-content {
+  border: 2.5px solid $wx-green;
+  border-radius: 2em;
+  height: 20px;
+  margin: 0 12px 0 0;
+  text-align: center;
+  width: 20px;
+}
+
+.book-arrow-back {
+  @include arrow($bg-color: $wx-blue);
 }
