@@ -6,7 +6,7 @@
       | Atrás
   .book-detail-content
       img.book-detail-cover(:src='book.image_url')
-      .badge-content 
+      .badge-content(v-if='handleIsValidBadge(book.author)') 
         img.badge(:src='badgeImg')
       .book-desciption-content
         .book-detail-title
@@ -53,6 +53,9 @@ export default {
     );
 
     const handleGoBack = () => route.go(-1);
+    const handleIsValidBadge = (value) => {
+      return value === 'Piers Anthony' ? true : false;
+    };
 
     watchEffect(() => {
       idBook.value
@@ -62,7 +65,7 @@ export default {
         : '';
     });
 
-    return { book, badgeImg, handleGoBack, bookDetail };
+    return { book, badgeImg, handleGoBack, bookDetail, handleIsValidBadge };
   },
 };
 </script>
