@@ -3,7 +3,7 @@ button.cart(@click='handleOpenCart' type='button')
   img(:src='cartImg')
   .cart-content-count     
     | {{cartStore.itemsCount}}
-.popup(:class='classObject')
+.popup(:class='classCartOpen')
   .popup-content
     img.close(@click='handleOpenCart' :src='closeImg')
     .popup-title
@@ -34,7 +34,7 @@ export default {
     const cartImg = require('@/assets/cart.png');
     const cartStore = useStoreCart();
     const isOpenCart = ref(false);
-    const classObject = computed(() => ({
+    const classCartOpen = computed(() => ({
       showPopup: isOpenCart.value,
       removePopup: !isOpenCart.value,
     }));
@@ -55,7 +55,7 @@ export default {
       cartStore,
       isOpenCart,
       handleOpenCart,
-      classObject,
+      classCartOpen,
       closeImg,
       deleteImg,
       handleDeleteItem,
@@ -64,5 +64,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
