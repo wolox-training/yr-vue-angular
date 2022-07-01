@@ -7,7 +7,7 @@ button.cart(@click='handleOpenCart' type='button')
   .popup-content
     img.close(@click='handleOpenCart' :src='closeImg')
     .popup-title
-      | Tu carrito de compras 
+      | {{$t('cart.title')}}
       .popup-container(v-if='cartStore.itemsCount')
         .popup-content-details(v-for='item in cartStore.items')
           .popup-content-item
@@ -17,9 +17,9 @@ button.cart(@click='handleOpenCart' type='button')
       div(v-else)
         img.popup-empty-img(:src='cartEmpyImg')
         .popup-empty-title
-          | El carrito está vacío
+          | {{$t('cart.empy')}}
         .popup-empty-desciption
-          | Parece que no tenés items en tu carrito de compras.
+          | {{$t('cart.empy-description')}}
  
 </template>
 

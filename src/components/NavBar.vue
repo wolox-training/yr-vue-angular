@@ -5,6 +5,11 @@
     Cart
     button.logout(@click='handleLogOut' type='button')
       | Logout
+    div
+      select.select(v-model='$i18n.locale')
+        option(v-for='(lang, i) in langs' :key='i' :value='lang.value')
+          | {{ lang.text }}
+
 </template>
 
 <script>
@@ -20,10 +25,14 @@ export default {
 
   setup() {
     const logoImg = inject('logoImg');
+    const langs = [
+      { value: 'en', text: 'English' },
+      { value: 'es', text: 'Spanish' },
+    ];
 
     const handleLogOut = () => signOff();
 
-    return { logoImg, handleLogOut };
+    return { logoImg, handleLogOut, langs };
   },
 };
 </script>

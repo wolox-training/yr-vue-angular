@@ -1,6 +1,6 @@
 <template lang="pug">
 .book-search 
-  input.book-search-input(v-model='inputSearch' type='search' placeholder='Buscá por título del libro...')
+  input.book-search-input(v-model='inputSearch' type='search' :placeholder='$t("books.search")')
   img.book-icon-search(:src='iconSearch' alt='Search icon')
 .books-container(v-if='booksFiltered')
   .books(

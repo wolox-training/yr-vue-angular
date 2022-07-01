@@ -1,0 +1,14 @@
+{
+  "cart": {
+    "title": "Tu carrito de compras ",
+    "empy": "El carrito esta vacio",
+    "empy-description": "Parece que no tenés items en tu carrito de compras."
+  },
+  
+  "books": {
+    "search": "Buscá por título del libro...",
+    "Author": "Autor del libro",
+    "editorial": "Editorial",
+    "year": "Año de publicación"
+  }
+}

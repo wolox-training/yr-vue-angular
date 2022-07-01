@@ -1,0 +1,16 @@
+@import '../variables/fonts';
+@import '../variables/colors';
+
+.select {
+  background-color: $wx-blue;
+  border: .5px solid $gray;
+  border-radius: 5px;
+  color: $white;
+  cursor: pointer;
+  margin: 10px;
+  overflow: hidden;
+  padding: 2px;
+  position: relative;
+}
+
+

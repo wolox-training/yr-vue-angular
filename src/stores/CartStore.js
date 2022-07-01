@@ -1,27 +1,26 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useStoreCart = defineStore('BookStore', {
-    state: () => {
-        return {
-            items: [],
-        }
+  state: () => {
+    return {
+      items: [],
+    };
+  },
+
+  getters: {
+    itemsCount() {
+      return this.items.length;
+    },
+  },
+
+  actions: {
+    addItem(item) {
+      this.items.push(item);
     },
 
-    getters: {
-        itemsCount() {
-            return this.items.length
-        }
+    removeItem(item) {
+      const idx = this.items.findIndex((book) => book.name === item.name);
+      if (idx > -1) this.items.splice(idx, 1);
     },
-
-    actions: {
-        addItem(item) {
-            this.items.push(item)
-        },
-
-        removeItem(item) {
-            const idx = this.items.findIndex(book => book.name === item.name)
-            if (idx > -1) this.items.splice(idx, 1)
-        }
-
-    }
-})
+  },
+});

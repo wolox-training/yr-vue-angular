@@ -1,0 +1,14 @@
+{
+  "cart": {
+    "title": "Your shopping cart ",
+    "empy": "The cart is empty",
+    "empy-description": "It seems that you have no items in your shopping cart."
+  },
+  
+  "books": {
+    "search": "Search by book title...",
+    "Author": "Author of the book",
+    "editorial": "Editorial",
+    "year": "Year of publication"
+  }
+}

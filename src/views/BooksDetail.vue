@@ -17,7 +17,7 @@
         .book-features-title(
           v-for='book in bookDetail' 
           :key='book.title')
-            | {{book.title}}
+            | {{$t(book.title)}}
             span.book-features-detail
               | {{book.desciption}}
 </template>
@@ -36,20 +36,20 @@ export default {
     const bookDetail = computed(() => {
       return [
         {
-          title: 'Autor del libro:',
+          title: 'books.Author',
           desciption: book.value.author,
         },
         {
-          title: 'Editorial:',
+          title: 'books.editorial',
           desciption: book.value.editor,
         },
         {
-          title: 'Año de publicación:',
+          title: 'books.year',
           desciption: book.value.year,
         },
       ];
     });
-    
+
     const handleGoBack = () => route.go(-1);
 
     const handleIsValidBadge = (value) => {
