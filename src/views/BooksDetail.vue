@@ -10,21 +10,19 @@
         img.badge(:src='badgeImg')
       .book-desciption-content
         .book-detail-title
-          | {{book.title}}
+          | {{ book.title }}
           span.book-genre
-            | ({{book.genre}})
+            | ({{ book.genre }})
         .book-line
         .book-features-title(
-          v-for='book in bookDetail' 
-          :key='book.title')
-            | {{$t(book.title)}}
+          v-for='book in bookDetail' :key='book.title')
+            | {{ $t(book.title) }}
             span.book-features-detail
-              | {{book.desciption}}
+              | {{ book.desciption }}
 </template>
 
 <script>
 import { ref, computed, watchEffect } from 'vue';
-import router from '@/router';
 import { getBookId } from '@/services/BookService';
 import route from '@/router';
 

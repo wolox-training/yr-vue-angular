@@ -3,11 +3,9 @@
   input.book-search-input(v-model='inputSearch' type='search' :placeholder='$t("books.search")')
   img.book-icon-search(:src='iconSearch' alt='Search icon')
 .books-container(v-if='booksFiltered')
-  .books(
-    v-for='book in booksFiltered'
-    :key='book.id'
+  .books(v-for='book in booksFiltered' :key='book.id'
   )
-    router-link(:to='{ path: `/books/${book.id}`}')
+    router-link(:to='`/books/${book.id}`')
       img.book-cover(:src='book.image_url' :alt='book.title')
       .book-title
         | {{ book.title }}
@@ -29,8 +27,7 @@ export default {
     const books = ref([]);
     const iconSearch = require('@/assets/search-icon.png');
     const inputSearch = ref('');
-    const booksFiltered = ref(
-      computed(() =>
+    const booksFiltered = computed(() =>
         inputSearch.value
           ? books.value.page.filter((book) =>
               book.title
@@ -39,7 +36,6 @@ export default {
             )
           : books.value.page,
       ),
-    );
     const cartStore = useStoreCart();
     const handleAddCartBook = (book) => {
       cartStore.addItem(book);

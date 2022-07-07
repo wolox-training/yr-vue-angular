@@ -1,25 +1,25 @@
 <template lang="pug">
 button.cart(@click='handleOpenCart' type='button')
-  img(:src='cartImg')
+  img(:src='cartImg' alt='cart icon')
   .cart-content-count     
-    | {{cartStore.itemsCount}}
+    | {{ cartStore.itemsCount }}
 .popup(:class='classCartOpen')
   .popup-content
     img.close(@click='handleOpenCart' :src='closeImg')
     .popup-title
-      | {{$t('cart.title')}}
+      | {{ $t('cart.title') }}
       .popup-container(v-if='cartStore.itemsCount')
         .popup-content-details(v-for='item in cartStore.items')
           .popup-content-item
-            | {{item.title}} - {{item.author}}
+            | {{ item.title }} - {{ item.author }}
             img.popup-cover-delete(:src='deleteImg' @click='handleDeleteItem(item)') 
           .popup-content-item-line
       div(v-else)
         img.popup-empty-img(:src='cartEmpyImg')
         .popup-empty-title
-          | {{$t('cart.empy')}}
+          | {{ $t('cart.empy') }}
         .popup-empty-desciption
-          | {{$t('cart.empy-description')}}
+          | {{ $t('cart.empy-description') }}
  
 </template>
 
