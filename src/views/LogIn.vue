@@ -9,15 +9,15 @@ form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handle-a
 </template>
 
 <script>
-import {ref} from 'vue';
-import {FIELDS_LOGIN} from '@/constants/Forms';
+import { ref } from 'vue';
+import { FIELDS_LOGIN } from '@/constants/Forms';
 import FormComponent from '@/components/FormComponent';
-import {signIn} from '@/services/UserService';
-import {userToken} from '@/utils/session';
+import { signIn } from '@/services/UserService';
+import { userToken } from '@/utils/session';
 
 export default {
   name: 'LogIn',
-  components: {FormComponent},
+  components: { FormComponent },
 
   setup() {
     const userData = ref({});
@@ -26,13 +26,19 @@ export default {
         .then((res) => {
           const token = res.headers['access-token'];
           if (token) {
-            userToken(token);
+            const { client, uid } = res.headers;
+            const infoUser = {
+              'Access-Token': token,
+              Client: client,
+              Uid: uid,
+            };
+            userToken(infoUser);
           }
         })
         .catch((error) => console.log(error));
     };
 
-    return {userData, fieldsArray: FIELDS_LOGIN, handleLogin};
+    return { userData, fieldsArray: FIELDS_LOGIN, handleLogin };
   },
 };
 </script>

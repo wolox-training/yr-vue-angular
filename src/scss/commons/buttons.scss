@@ -1,5 +1,6 @@
 @import '../variables/fonts';
 @import '../variables/colors';
+@import '../commons/icons.scss';
 
 .button {
   border-radius: 6px;
@@ -24,4 +25,37 @@
 .form-links-primary {
   background-color: $bg-gray;
   color: $wx-green;
+}
+
+.cart-add {
+  background: $wx-green;
+  border-radius: 2em;
+  color: $white;
+  font-size: $card-button-add;
+  height: 32px;
+  line-height: 33px;
+  text-align: center;
+  transform: translate(20px, -5px);
+  width: 31px;
+  position: absolute;
+  right: 30px;
+  bottom: 2px;
+}
+
+.book-detail {
+  align-items: center;
+  font-size: $book-button-detail;
+  line-height: 24px;
+}
+
+.book-arrow-back-content {
+  border: 2.5px solid $wx-green;
+  border-radius: 2em;
+  height: 20px;
+  margin: 0 12px;
+  width: 20px;
+}
+
+.book-arrow-back {
+  @include arrow($bg-color: $wx-blue);
 }

@@ -1,0 +1,104 @@
+@import '../variables/fonts';
+@import '../variables/colors';
+@import '../commons/animations.scss';
+
+.popup {
+  align-items: center;
+  background-color: $bg-popup;
+  display: none;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  padding: 150px 233px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.popup-content {
+  background-color: $white;
+  border-radius: 15px;
+  box-sizing: border-box;
+  display: none;
+  height: 600px;
+  max-width: 100%;
+  min-height: 400px;
+  overflow: auto;
+  padding: 24px;
+  position: relative;
+  transition: 0.3s ease;
+  width: 900px;
+}
+
+.popup-title {
+  font-size: 36px;
+  line-height: 42px;
+}
+
+.popup-content-details {
+  margin: 26px;
+}
+
+.popup-content-item {
+  display: flex;
+  font-size: $popup-content-item;
+  height: 56px;
+  justify-content: space-between;
+  line-height: 26px;
+  max-width: 100%;
+  width: 800px;
+}
+
+.popup-cover-delete {
+  height: 24px;
+  width: 19.49px;
+}
+
+.popup-content-item-line {
+  background-color: $line-popup;
+  height: 2px;
+  max-width: 100%;
+  width: 800px;
+}
+
+.popup-empty-img {
+  height: 168px;
+  margin: 90px 233px 90px;
+  width: 230.66px;
+}
+
+.popup-empty-title {
+  font-size: $popup-empty-title;
+  font-weight: 700;
+  height: 39px;
+  line-height: 38px;
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+.popup-empty-desciption {
+  font-size: $popup-empty-desciption;
+  height: 29px;
+  line-height: 28px;
+  text-align: center;
+}
+
+.showPopup {
+  display: flex;
+}
+
+.showPopup .popup-content {
+  animation: popup 0.3s forwards;
+  display: block;
+}
+
+.removePopup {
+  display: none;
+}
+
+.close {
+  float: right;
+  height: 24px;
+  width: 24px;
+}

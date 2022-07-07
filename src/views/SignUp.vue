@@ -12,7 +12,7 @@ form-component(:fields='fieldsArray.fields' :rules='fieldsArray.rules' :handle-a
 import { ref } from 'vue';
 import { FIELDS_SIGNUP } from '@/constants/Forms';
 import FormComponent from '@/components/FormComponent';
-import {signUp} from '@/services/UserService';
+import { signUp } from '@/services/UserService';
 import router from '@/router';
 
 export default {

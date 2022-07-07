@@ -1,0 +1,150 @@
+@import '../variables/fonts';
+@import '../variables/colors';
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 231px 67px;
+}
+
+.books {
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.5);
+  height: 300px;
+  margin: 0 36px 36px 0;
+  padding: 28px 28px 19px;
+  position: relative;
+  width: 198px;
+}
+
+.book-cover {
+  height: 200px;
+  max-width: 100%;
+  width: 142px;
+}
+
+.book-title {
+  @include text-ellipsis;
+  font-size: $book-title;
+  font-weight: 700;
+  line-height: 18px;
+  max-width: 100%;
+  width: 106px;
+}
+
+.book-author {
+  @include text-ellipsis;
+  color: $book-gray;
+  font-size: $book-author;
+  height: 18px;
+  line-height: 18px;
+  max-width: 100%;
+  width: 109px;
+}
+
+.book-search {
+  display: flex;
+  justify-content: center;
+  margin: 35px 0 45px;
+}
+
+.book-search-input {
+  border: 2px solid #e8e8e8;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: $book-input-search;
+  height: 50px;
+  max-width: 100%;
+  padding: 10px;
+  width: 646px;
+}
+
+.book-icon-search {
+  height: 24px;
+  max-width: 100%;
+  transform: translate(-40px, 13px);
+  width: 24px;
+}
+
+.book-detail-container {
+  background-color: #f4f4f4;
+  padding: 46px 233px;
+}
+
+.book-detail-content {
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.5);
+  display: flex;
+  height: 416px;
+  margin: 108px 0;
+  max-width: 100%;
+  padding: 24px;
+  width: 900px;
+}
+
+.book-detail-cover {
+  height: 368px;
+  max-width: 100%;
+  width: 261px;
+}
+
+.book-desciption-content {
+  font-weight: 700;
+  margin-left: 56px;
+}
+
+.book-detail-title {
+  font-size: $book-detail-title;
+  height: 39px;
+  line-height: 38px;
+}
+
+.book-genre {
+  color: $book-gray;
+  font-size: $book-genre;
+  height: 30px;
+  line-height: 28px;
+  margin: 0 8px;
+}
+
+.book-line {
+  background-color: $wx-green;
+  height: 4px;
+  margin: 14px 0 ;
+  max-width: 100%;
+  width: 500px;
+}
+
+.book-features-title {
+  font-size: $book-features-title;
+  height: 22px;
+  line-height: 24px;
+  margin: 18px 0;
+}
+
+.book-features-detail {
+  color: $book-gray;
+  font-size: $book-features-detail;
+  height: 22px;
+  line-height: 24px;
+  margin: 0 8px;
+  max-width: 100%;
+  width: 274px;
+}
+
+.badge-content {
+  position: relative;
+}
+
+.badge {
+  height: 118.57px;
+  position: absolute;
+  right: -20px;
+  top: -25px;
+  transform: rotate(15deg);
+  width: 94.53px;
+}
