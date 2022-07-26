@@ -24,7 +24,7 @@
 <script>
 import { ref, computed, watchEffect } from 'vue';
 import { getBookId } from '@/services/BookService';
-import route from '@/router';
+import router from '@/router';
 
 export default {
   setup() {
