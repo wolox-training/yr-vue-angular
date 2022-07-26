@@ -1,0 +1,93 @@
+.DS_STORE
+
+# ignore Angular
+angular/dist/
+angular/bazel-out
+angular/integration/bazel/bazel-*
+angular/*.log
+angular/node_modules
+
+# CircleCI temporary file for cache key computation.
+# See `save_month_to_file` in `.circleci/config.yml`.
+angular/month.txt
+
+# Include when developing application packages.
+angular/pubspec.lock
+angular/.c9
+angular/.idea/
+angular/.devcontainer/*
+angular/!.devcontainer/README.md
+angular/!.devcontainer/recommended-devcontainer.json
+angular/!.devcontainer/recommended-Dockerfile
+angular/.settings/
+angular/.vscode/launch.json
+angular/.vscode/settings.json
+angular/.vscode/tasks.json
+angular/*.swo
+angular/*.swp
+angular/modules/.settings
+angular/modules/.vscode
+angular/.vimrc
+angular/.nvimrc
+
+# Don't check in secret files
+angular/*secret.js
+
+# Ignore npm/yarn debug log
+angular/npm-debug.log
+angular/yarn-error.log
+
+# build-analytics
+angular/.build-analytics
+
+# rollup-test output
+angular//modules/rollup-test/dist/
+
+# User specific bazel settings
+angular/.bazelrc.user
+
+# User specific ng-dev settings
+angular/.ng-dev.user*
+
+angular/.notes.md
+angular/baseline.json
+
+# Ignore .history for the xyz.local-history VSCode extension
+angular/.history
+angular/.angular
+
+# Husky
+angular/.husky/_
+
+# Editor directories and files
+angular/.idea
+angular/.vscode
+angular/*.suo
+angular/*.ntvs*
+angular/*.njsproj
+angular/*.sln
+angular/*.sw?
+
+#ignore Vue
+
+vue/node_modules
+vue//dist
+
+# local env files
+vue/.env
+vue/.env.*.local
+
+# Log files
+vue/npm-debug.log*
+vue/yarn-debug.log*
+vue/yarn-error.log*
+vue/pnpm-debug.log*
+
+# Editor directories and files
+vue/.idea
+vue/.vscode
+vue/*.suo
+vue/*.ntvs*
+vue/*.njsproj
+vue/*.sln
+vue/*.sw?
