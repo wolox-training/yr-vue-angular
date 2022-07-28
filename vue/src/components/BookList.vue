@@ -28,14 +28,14 @@ export default {
     const iconSearch = require('@/assets/search-icon.png');
     const inputSearch = ref('');
     const booksFiltered = computed(() =>
-        inputSearch.value
-          ? books.value.page.filter((book) =>
-              book.title
-                .toLowerCase()
-                .includes(inputSearch.value.toLowerCase()),
-            )
-          : books.value.page,
-      ),
+      inputSearch.value
+        ? books.value.page.filter((book) =>
+          book.title
+            .toLowerCase()
+            .includes(inputSearch.value.toLowerCase()),
+        )
+        : books.value.page,
+    );
     const cartStore = useStoreCart();
     const handleAddCartBook = (book) => {
       cartStore.addItem(book);
