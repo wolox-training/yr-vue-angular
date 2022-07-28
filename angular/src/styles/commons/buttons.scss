@@ -1,0 +1,47 @@
+@import "../variables/fonts";
+
+%base-button {
+  align-items: center;
+  border: solid $wx-green 1px;
+  border-radius: 5px;
+  display: flex;
+  font-size: $button-primary;
+  height: 32px;
+  justify-content: center;
+}
+
+.button {
+  @extend %base-button;
+  background-color: $wx-green;
+  color: $white;
+  margin-top: 24px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: $wx-green;
+  }
+
+  &:disabled {
+    background-color: $gray;
+    border: solid $gray 1px;
+    cursor: not-allowed;
+  }
+}
+
+.router-link-primary {
+  @extend %base-button;
+
+  color: $wx-green;
+
+  &:hover {
+    color: $wx-green;
+  }
+
+  &:active {
+    border: solid $wx-green 1px;
+    color: $wx-green;
+  }
+}

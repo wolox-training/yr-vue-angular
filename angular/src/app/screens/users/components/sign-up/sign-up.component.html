@@ -1,0 +1,26 @@
+<app-form-container>
+    <form [formGroup]="userForm" (ngSubmit)="handleSingUp()" class="form-account ">
+        <label for="firstname" class="label-account">Nombre</label>
+        <input type="text" class="input-text-account  " formControlName="first_name">
+        <span class="error-account" *ngIf="nameControl?.invalid && (nameControl?.dirty || nameControl?.touched)">Este campo es
+            requerido. </span>
+        <label for="lastname" class="label-account">Apellido</label>
+        <input type="text" class="input-text-account " formControlName="last_name">
+        <span class="error-account" *ngIf="lastNameControl?.invalid && lastNameControl?.touched">Este campo es requerido.
+        </span>
+        <label for="email" class="label-account">Email</label>
+        <input type="text" class="input-text-account " formControlName="email">
+        <span class="error-account" *ngIf="emailControl?.invalid && emailControl?.touched">Debe especificar un correo
+            electrónico válido.</span>
+        <label for="password" class="label-account">Password</label>
+        <input type="password" class="input-text-account " formControlName="password">
+        <span class="error-account" *ngIf="passwordControl?.invalid && passwordControl?.touched">
+            Este campo es obligatorio con al menos A-Z, a-z y 0-9 caracteres.</span>
+        <label for="password-confirm" class="label-account">Confirmación de Password</label>
+        <input type="password" class="input-text-account " formControlName="password_confirmation">
+        <span class="error-account" *ngIf="userForm.getError('notSame') && passwordConfirmationControl?.touched">Este campo debe ser igual a password</span>
+        <input type="submit" value="Sign Up" class="button" [disabled]="userForm.invalid">
+    </form>
+    <hr class="line-form">
+    <a routerLink="/login" class="  router-link-primary">Login</a>
+</app-form-container>
