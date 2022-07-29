@@ -1,0 +1,13 @@
+<div class="form-content">
+  <img src="assets/logo_full_color.svg" alt="wolox-logo" class="logo" />
+  <form [formGroup]="userForm" (ngSubmit)="sendForm()">
+    <div *ngFor="let field of formFields" class="form-group">
+      <label for="{{field.key}}" class="label-account">{{field.label}}</label>
+      <input type="{{field.type}}" class="input-text-account" formControlName="{{field.key}}" />
+      <span class="error-account" *ngIf="matchError(field)">{{field.errorMessage}}
+      </span>
+    </div>
+    <input type="submit" value="{{buttonSend}}" class="button" [disabled]="userForm.invalid" />
+  </form>
+  <ng-content></ng-content>
+</div>

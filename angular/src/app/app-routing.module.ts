@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'prefix', redirectTo: 'sign-up' },
   {
-    path: '',
+    path:'' ,pathMatch:'full'  , redirectTo:'sign-up'
+  },
+  {
+    path: 'sign-up',
     loadChildren: () =>
-      import('./screens/users/users.module').then((m) => m.UsersModule),
+      import('./screens/sign-up/sign-up.module').then((m) => m.SignUpModule),
   },
 
   { path: '**', redirectTo: '', pathMatch: 'full' },

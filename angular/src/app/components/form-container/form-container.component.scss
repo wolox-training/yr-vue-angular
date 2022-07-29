@@ -1,4 +1,5 @@
-@import '../../../../../styles/variables/colors';
+@import 'src/styles/variables/colors';
+@import 'src/styles/commons/forms.scss';
 
 .form-content {
     background-color: $bg-gray;

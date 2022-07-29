@@ -15,6 +15,7 @@
   background-color: $wx-green;
   color: $white;
   margin-top: 24px;
+  width: 100%;
 
   &:hover {
     cursor: pointer;
@@ -33,7 +34,6 @@
 
 .router-link-primary {
   @extend %base-button;
-
   color: $wx-green;
 
   &:hover {

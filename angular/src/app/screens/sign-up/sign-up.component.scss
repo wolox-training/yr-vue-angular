@@ -1,0 +1,13 @@
+@import 'src/styles/variables/colors';
+
+.line-form {
+  color: $gray;
+  height: 2px;
+  margin: 16px 0;
+}
+
+.logo {
+  align-self: center;
+  height: 70px;
+  width: 212px;
+}
