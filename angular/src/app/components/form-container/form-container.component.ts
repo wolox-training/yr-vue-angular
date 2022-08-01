@@ -1,16 +1,15 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { CustomValidators } from 'src/app/helpers/utilities/customValidators';
-import { Ifiels } from 'src/app/interfaces/global.interface';
+import { IFields } from 'src/app/interfaces/global.interface';
 
 @Component({
   selector: 'app-form-container',
   templateUrl: './form-container.component.html',
   styleUrls: ['./form-container.component.scss'],
 })
-
 export class FormContainerComponent {
-  @Input() formFields!: Ifiels[];
+  @Input() formFields!: IFields[];
   @Input() buttonSend!: string;
   @Output() handleOnSubmit = new EventEmitter<object>();
 
@@ -29,7 +28,7 @@ export class FormContainerComponent {
     this.handleOnSubmit.emit(this.userForm.value);
   }
 
-  matchError(field: Ifiels) {
+  matchError(field: IFields) {
     if (field.type == 'password') {
       return (
         this.userForm.getError('mismatch') &&

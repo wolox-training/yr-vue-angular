@@ -6,15 +6,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormContainerComponent } from 'src/app/components/form-container/form-container.component';
 
 @NgModule({
-  declarations: [
-    SignUpComponent,FormContainerComponent
+  declarations: [SignUpComponent, FormContainerComponent],
+  imports: [CommonModule, SignUpRoutingModule, ReactiveFormsModule],
+  exports: [
+    SignUpComponent,
+    FormContainerComponent,
+    CommonModule,
+    ReactiveFormsModule,
   ],
-  imports: [
-    CommonModule,SignUpRoutingModule,ReactiveFormsModule
-  ],exports:[
-    SignUpComponent,FormContainerComponent,
-    CommonModule,ReactiveFormsModule,
-
-  ]
 })
-export class SignUpModule { }
+export class SignUpModule {}

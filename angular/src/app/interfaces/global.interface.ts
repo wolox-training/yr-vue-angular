@@ -1,4 +1,4 @@
-export interface Ifiels {
+export interface IFields {
   key: string;
   label: string;
   type: string;

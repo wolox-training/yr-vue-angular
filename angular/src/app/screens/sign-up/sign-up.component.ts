@@ -6,10 +6,9 @@ import { SIGN_UP_FIELDS } from 'src/app/constants/formAccount';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
 })
-
 export class SignUpComponent {
   fields = SIGN_UP_FIELDS;
-  buttonSend= 'Sign Up'
+  buttonSend = 'Sign Up';
 
   handleOnSubmit(value: object) {
     console.log(value);
