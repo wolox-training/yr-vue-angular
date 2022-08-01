@@ -1,28 +1,27 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { CustomValidators } from 'src/app/helpers/utilities/customValidators';
-import { Ifiels } from 'src/app/interfaces/global.interface';
+import { Ifiels, IUser } from 'src/app/interfaces/global.interface';
 
 @Component({
   selector: 'app-form-container',
   templateUrl: './form-container.component.html',
   styleUrls: ['./form-container.component.scss'],
 })
-
 export class FormContainerComponent {
   @Input() formFields!: Ifiels[];
   @Input() buttonSend!: string;
-  @Output() handleOnSubmit = new EventEmitter<object>();
+  @Output() handleOnSubmit = new EventEmitter<IUser>();
 
-  userForm = new FormGroup(
+  userForm: any = new FormGroup(
     {
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
-      confirmPassword: new FormControl('', [Validators.required]),
+      passwordConfirmation: new FormControl('', [Validators.required]),
     },
-    [CustomValidators.MatchValidator('password', 'confirmPassword')],
+    [CustomValidators.MatchValidator('password', 'passwordConfirmation')],
   );
 
   sendForm() {
@@ -33,7 +32,7 @@ export class FormContainerComponent {
     if (field.type == 'password') {
       return (
         this.userForm.getError('mismatch') &&
-        this.userForm.get('confirmPassword')?.touched
+        this.userForm.get('passwordConfirmation')?.touched
       );
     } else {
       return (

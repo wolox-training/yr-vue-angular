@@ -25,7 +25,7 @@ export const SIGN_UP_FIELDS = [
       'El password es requerido y debe contener al menos 1 mayúscula, 1 minúscula, 1 número y 1 caracter',
   },
   {
-    key: 'confirmPassword',
+    key: 'passwordConfirmation',
     label: 'Confirmación de Password',
     type: 'password',
     errorMessage: 'La confirmación debe coincidir con el password',
