@@ -10,9 +10,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./screens/sign-up/sign-up.module').then((m) => m.SignUpModule),
   },
-
   { path: '**', redirectTo: '', pathMatch: 'full' },
-
 ];
 
 @NgModule({

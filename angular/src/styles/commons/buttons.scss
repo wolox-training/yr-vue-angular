@@ -1,8 +1,8 @@
-@import "../variables/fonts";
+@import "src/styles/variables/fonts";
 
 %base-button {
   align-items: center;
-  border: solid $wx-green 1px;
+  border: solid $earls-green 1px;
   border-radius: 5px;
   display: flex;
   font-size: $button-primary;
@@ -12,7 +12,7 @@
 
 .button {
   @extend %base-button;
-  background-color: $wx-green;
+  background-color: $earls-green;
   color: $white;
   margin-top: 24px;
   width: 100%;
@@ -22,7 +22,7 @@
   }
 
   &:active {
-    background-color: $wx-green;
+    background-color: $earls-green;
   }
 
   &:disabled {
@@ -34,14 +34,14 @@
 
 .router-link-primary {
   @extend %base-button;
-  color: $wx-green;
+  color: $earls-green;
 
   &:hover {
-    color: $wx-green;
+    color: $earls-green;
   }
 
   &:active {
-    border: solid $wx-green 1px;
-    color: $wx-green;
+    border: solid $earls-green 1px;
+    color: $earls-green;
   }
 }

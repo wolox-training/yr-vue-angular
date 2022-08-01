@@ -8,6 +8,7 @@ import { Ifiels } from 'src/app/interfaces/global.interface';
   templateUrl: './form-container.component.html',
   styleUrls: ['./form-container.component.scss'],
 })
+
 export class FormContainerComponent {
   @Input() formFields!: Ifiels[];
   @Input() buttonSend!: string;
