@@ -1,5 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Status } from 'src/app/constants/codeRequest';
 import { SIGN_UP_FIELDS } from 'src/app/constants/formAccount';
 import { IUser } from 'src/app/interfaces/global.interface';
 import { UserService } from 'src/app/services/user.service';
@@ -19,7 +20,7 @@ export class SignUpComponent {
     this.userService
       .createUser(value)
       .subscribe((response: HttpResponse<Object>) => {
-        if (response.status === 201) {
+        if (response.status === Status.success) {
           console.log('success');
         }
       });
