@@ -9,5 +9,9 @@
     </div>
     <input type="submit" [value]="buttonSend" class="button" />
   </form>
+  <hr class="line-form" />
   <ng-content></ng-content>
+</div>
+<div *ngIf="mensajeError" class="alert danger-alert">
+  <h3>{{mensajeError}} </h3>
 </div>

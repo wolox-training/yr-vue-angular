@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IUser } from 'src/app/interfaces/global.interface';
 import { environment } from '../../environments/environment';
@@ -15,9 +15,20 @@ export class UserService {
 
   createUser(user: IUser): Observable<HttpResponse<object>> {
     user.locale = 'en';
+    const headers = 'headers made with HttpHeaders';
 
     return this.http.post(
       `${this.API}/api/v1/users`,
+      snakeCaseSerializer.serialize(user),
+      {
+        observe: 'response',
+      },
+    );
+  }
+
+  login(user: IUser) {
+    return this.http.post(
+      `${this.API}/api/v1/users/sign_in`,
       snakeCaseSerializer.serialize(user),
       {
         observe: 'response',
