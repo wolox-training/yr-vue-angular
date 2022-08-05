@@ -22,7 +22,7 @@ export const SIGN_UP_FIELDS = [
     label: 'Password',
     type: 'password',
     errorMessage:
-      'La password es requerido y debe contener al menos 1 mayúscula, 1 minúscula, 1 número y 1 caracter',
+      'La contraseña es requerida y debe contener al menos 1 mayúscula, 1 minúscula, 1 número y 1 carácter',
   },
   {
     key: 'passwordConfirmation',
@@ -44,6 +44,6 @@ export const LOGIN_FIELDS = [
     label: 'Password',
     type: 'password',
     errorMessage:
-      'La password es requerido y debe contener al menos 1 mayúscula, 1 minúscula, 1 número y 1 caracter',
+      'La contraseña es requerida y debe contener al menos 1 mayúscula, 1 minúscula, 1 número y 1 carácter',
   },
 ];

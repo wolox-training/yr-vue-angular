@@ -1,5 +1,5 @@
-export enum Status {
-  success = 201,
-  ok = 200,
-  unAuthorized = 401,
+export enum StatusRequest {
+  Created = 201,
+  Ok = 200,
+  UnAuthorized = 401,
 }

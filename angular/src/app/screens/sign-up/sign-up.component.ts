@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { SIGN_UP_FIELDS } from '../../constants/formAccount';
 import { IUser } from 'src/app/interfaces/global.interface';
 import { UserService } from '../../services/user.service';
+import { StatusRequest } from 'src/app/constants/codeRequest';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,7 +19,7 @@ export class SignUpComponent {
     this.userService
       .createUser(value)
       .subscribe((response: HttpResponse<Object>) => {
-        if (response.status === 201) {
+        if (response.status === StatusRequest.Created) {
           console.log('success');
         }
       });
