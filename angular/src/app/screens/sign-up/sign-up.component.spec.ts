@@ -6,11 +6,11 @@ import { FormContainerComponent } from '../../components/form-container/form-con
 import { SignUpRoutingModule } from './sign-up-routing.module';
 import { SignUpComponent } from './sign-up.component';
 import { APP_BASE_HREF } from '@angular/common';
-
 import { fireEvent, render, waitFor } from '@testing-library/angular';
 import { screen } from '@testing-library/dom';
-import '@testing-library/jest-dom';
 import { SIGN_UP_FIELDS } from '../../constants/formAccount';
+import '@testing-library/jest-dom';
+import { IFields } from 'src/app/interfaces/global.interface';
 
 describe('FormContainerComponent', () => {
   const createUserMock = jest.fn();
@@ -38,24 +38,20 @@ describe('FormContainerComponent', () => {
   it('check all empty fields', async () => {
     const form = screen.getByRole('form');
     fireEvent.submit(form);
-    const errorSpans = screen.getAllByTestId('error-span');
-
-    expect(errorSpans).toHaveLength(5);
+    const fields: IFields[] = SIGN_UP_FIELDS;
+    fields.map((field) => {
+      expect(screen.getByText(field.errorMessage)).toBeInTheDocument();
+    });
+    expect(createUserMock).not.toHaveBeenCalled();
   });
 
   it('some wrong field shows an error and does not send the form', async () => {
     const email = screen.getByLabelText(/Email/i);
-    fireEvent.input(email, {
-      target: {
-        value: 'ramos111com12',
-      },
-    });
+    addValueEvent(email, 'ramos111com12');
     await waitFor(() => fireEvent.click(screen.getByText('Sign Up')));
-
     expect(
       screen.getByText('El email es requerido y debe ser válido'),
     ).toBeInTheDocument();
-
     expect(createUserMock).not.toHaveBeenCalled();
   });
 

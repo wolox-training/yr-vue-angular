@@ -8,6 +8,6 @@ import { FormContainerComponent } from 'src/app/components/form-container/form-c
 @NgModule({
   declarations: [SignUpComponent, FormContainerComponent],
   imports: [CommonModule, SignUpRoutingModule, ReactiveFormsModule],
-  exports: [SignUpComponent, FormContainerComponent, CommonModule],
+  exports: [],
 })
 export class SignUpModule {}
