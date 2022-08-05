@@ -1,0 +1,26 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/fonts';
+
+.navbar {
+  background-color: $white;
+  border-top: 8px solid $cerulean;
+  box-shadow: 0 4px 10px 0 $box-shadow-navbar;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  padding: 0 246px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.logout {
+  color: $black;
+  font-size: $navbar-container;
+  width: 63px;
+}
+
+.navbar-options {
+  align-items: center;
+  display: flex;
+}
