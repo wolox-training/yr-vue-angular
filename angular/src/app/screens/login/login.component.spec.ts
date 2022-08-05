@@ -10,9 +10,10 @@ import { LOGIN_FIELDS } from '../../constants/formAccount';
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
 import '@testing-library/jest-dom';
+import { IFields } from 'src/app/interfaces/global.interface';
 
 describe('FormContainerComponent', () => {
-  const createUserMock = jest.fn();
+  const loginUserMock = jest.fn();
   beforeEach(async () => {
     render(FormContainerComponent, {
       declarations: [LoginComponent, FormContainerComponent],
@@ -27,7 +28,7 @@ describe('FormContainerComponent', () => {
         formFields: LOGIN_FIELDS,
         buttonSend: 'Login',
         handleOnSubmit: {
-          emit: createUserMock,
+          emit: loginUserMock,
         } as any,
       },
       providers: [{ provide: APP_BASE_HREF, useValue: '/my/app' }],
@@ -37,24 +38,21 @@ describe('FormContainerComponent', () => {
   it('check all empty fields', async () => {
     const form = screen.getByRole('form');
     fireEvent.submit(form);
-    const errorSpans = screen.getAllByTestId('error-span');
-    expect(errorSpans).toHaveLength(2);
+    const fields: IFields[] = LOGIN_FIELDS;
+    fields.map((field) => {
+      expect(screen.getByText(field.errorMessage)).toBeInTheDocument();
+    });
   });
 
   it('check fields with incorrect validation', async () => {
     const email = screen.getByLabelText(/Email/i);
-    fireEvent.input(email, {
-      target: {
-        value: 'ramos111com12',
-      },
-    });
+    addValueEvent(email, 'ramos111com12');
     await waitFor(() => fireEvent.click(screen.getByText('Login')));
 
     expect(
       screen.getByText('El formato de mail no es correcto'),
     ).toBeInTheDocument();
-
-    expect(createUserMock).not.toHaveBeenCalled();
+    expect(loginUserMock).not.toHaveBeenCalled();
   });
 
   it('submitting correct form ', async () => {
@@ -64,7 +62,7 @@ describe('FormContainerComponent', () => {
     addValueEvent(password, 'Asd123');
     await waitFor(() => fireEvent.click(screen.getByText('Login')));
 
-    expect(createUserMock).toHaveBeenCalled();
+    expect(loginUserMock).toHaveBeenCalled();
   });
 });
 

@@ -15,8 +15,6 @@ export class UserService {
 
   createUser(user: IUser): Observable<HttpResponse<object>> {
     user.locale = 'en';
-    const headers = 'headers made with HttpHeaders';
-
     return this.http.post(
       `${this.API}/api/v1/users`,
       snakeCaseSerializer.serialize(user),

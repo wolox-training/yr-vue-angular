@@ -1,17 +1,17 @@
 @import '../variables/colors';
 
 .alert {
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 15px 5px $silver;
   animation-duration: 5s;
   animation-name: slidein;
-  position: fixed;
-  top: 0;
-  right: 0;
-  transform: translateX(100%);
+  border-radius: 5px;
+  box-shadow: 0 0 15px 5px $silver;
   justify-content: center;
+  margin: 20px auto;
+  padding: 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
 }
 
 @mixin alert($name, $bgColor) {

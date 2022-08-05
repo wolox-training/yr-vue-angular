@@ -12,11 +12,11 @@ import { UserService } from '../../services/user.service';
 export class LoginComponent {
   fields = LOGIN_FIELDS;
   buttonSend = 'Login';
-  mensajeError!: string;
+  errorMessage!: string;
   constructor(private userService: UserService) {}
 
   handleOnSubmit(value: IUser): void {
-    this.mensajeError = '';
+    this.errorMessage = '';
     this.userService.login(value).subscribe(
       (response: HttpResponse<Object>) => {
         if (response.status === Status.ok) {
@@ -25,7 +25,7 @@ export class LoginComponent {
       },
       (error) => {
         if (error.status === Status.unAuthorized) {
-          this.mensajeError = 'Credenciales incorrectas';
+          this.errorMessage = 'Credenciales incorrectas';
         }
       },
     );

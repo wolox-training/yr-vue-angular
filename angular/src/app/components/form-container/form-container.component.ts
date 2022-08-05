@@ -12,7 +12,7 @@ export class FormContainerComponent implements OnInit {
   @Input() formFields!: IFields[];
   @Input() buttonSend!: string;
   @Output() handleOnSubmit = new EventEmitter<IUser>();
-  @Input() mensajeError!: string;
+  @Input() errorMessage!: string;
   userForm: any = {};
 
   validations: any = {
@@ -38,7 +38,7 @@ export class FormContainerComponent implements OnInit {
     if (this.userForm.valid) {
       this.handleOnSubmit.emit(this.userForm.value);
     } else {
-      this.mensajeError = 'Hay campos incompletos';
+      this.errorMessage = 'Hay campos incompletos';
       this.userForm.markAllAsTouched();
       this.userForm.updateValueAndValidity();
     }
