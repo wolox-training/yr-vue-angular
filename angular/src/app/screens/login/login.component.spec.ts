@@ -6,9 +6,9 @@ import { screen } from '@testing-library/dom';
 import '@testing-library/jest-dom';
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
-import { LOGIN_FIELDS } from '../../constants/form-account';
 import { AppRoutingModule } from '../../app-routing.module';
 import { FormContainerComponent } from '../../components/form-container/form-container.component';
+import { LOGIN_FIELDS } from '../../constants/form-account';
 import { IFields } from 'src/app/interfaces/global.interface';
 
 describe('FormContainerComponent', () => {
