@@ -1,16 +1,15 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { fireEvent, render, waitFor } from '@testing-library/angular';
+import { screen } from '@testing-library/dom';
+import '@testing-library/jest-dom';
+import { IFields } from 'src/app/interfaces/global.interface';
 import { AppRoutingModule } from '../../app-routing.module';
 import { FormContainerComponent } from '../../components/form-container/form-container.component';
 import { SignUpRoutingModule } from './sign-up-routing.module';
 import { SignUpComponent } from './sign-up.component';
-import { APP_BASE_HREF } from '@angular/common';
-import { fireEvent, render, waitFor } from '@testing-library/angular';
-import { screen } from '@testing-library/dom';
 import { SIGN_UP_FIELDS } from '../../constants/formAccount';
-import '@testing-library/jest-dom';
-import { IFields } from 'src/app/interfaces/global.interface';
 
 describe('FormContainerComponent', () => {
   const createUserMock = jest.fn();
