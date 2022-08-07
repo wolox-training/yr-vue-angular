@@ -1,15 +1,14 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from '../../app-routing.module';
-import { FormContainerComponent } from '../../components/form-container/form-container.component';
-import { APP_BASE_HREF } from '@angular/common';
 import { fireEvent, render, waitFor } from '@testing-library/angular';
 import { screen } from '@testing-library/dom';
-import { LOGIN_FIELDS } from '../../constants/formAccount';
+import '@testing-library/jest-dom';
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
-import '@testing-library/jest-dom';
+import { LOGIN_FIELDS } from '../../constants/form-account';
+import { AppRoutingModule } from '../../app-routing.module';
+import { FormContainerComponent } from '../../components/form-container/form-container.component';
 import { IFields } from 'src/app/interfaces/global.interface';
 
 describe('FormContainerComponent', () => {

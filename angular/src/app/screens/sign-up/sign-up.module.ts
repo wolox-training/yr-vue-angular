@@ -13,6 +13,6 @@ import { FormContainerModule } from 'src/app/components/form-container/form-cont
     ReactiveFormsModule,
     FormContainerModule,
   ],
-  exports: [SignUpComponent, CommonModule, FormContainerModule],
+  exports: [],
 })
 export class SignUpModule {}

@@ -12,6 +12,6 @@ import { FormContainerModule } from 'src/app/components/form-container/form-cont
     ReactiveFormsModule,
     FormContainerModule,
   ],
-  exports: [LoginComponent, CommonModule, ReactiveFormsModule],
+  exports: [],
 })
 export class LoginModule {}

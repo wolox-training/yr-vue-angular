@@ -10,7 +10,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { fireEvent, render, waitFor } from '@testing-library/angular';
 import { screen } from '@testing-library/dom';
 import '@testing-library/jest-dom';
-import { SIGN_UP_FIELDS } from '../../constants/formAccount';
+import { SIGN_UP_FIELDS } from '../../constants/form-account';
 
 describe('FormContainerComponent', () => {
   const createUserMock = jest.fn();

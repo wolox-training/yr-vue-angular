@@ -28,7 +28,7 @@ export const SIGN_UP_FIELDS = [
     key: 'passwordConfirmation',
     label: 'Confirmación de Password',
     type: 'password',
-    errorMessage: 'La confirmación debe coincidir con el password',
+    errorMessage: 'La confirmación debe coincidir con el campo password',
   },
 ];
 

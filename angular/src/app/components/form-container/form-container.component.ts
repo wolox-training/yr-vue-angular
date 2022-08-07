@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
-import { CustomValidators } from '../../helpers/utilities/customValidators';
+import { CustomValidators } from '../../helpers/utilities/custom-validators';
 import { IFields, IUser } from 'src/app/interfaces/global.interface';
 
 @Component({
@@ -8,54 +8,35 @@ import { IFields, IUser } from 'src/app/interfaces/global.interface';
   templateUrl: './form-container.component.html',
   styleUrls: ['./form-container.component.scss'],
 })
-export class FormContainerComponent implements OnInit {
+export class FormContainerComponent {
   @Input() formFields!: IFields[];
   @Input() buttonSend!: string;
   @Output() handleOnSubmit = new EventEmitter<IUser>();
   @Input() errorMessage!: string;
-  userForm: any = {};
+  @Input() formControls!: FormGroup;
 
-  validations: any = {
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.pattern('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{6,}'),
-    ]),
-    passwordConfirmation: new FormControl('', [Validators.required]),
-  };
-
-  ngOnInit(): void {
-    this.formFields.map((field) => {
-      this.userForm[field.key] = this.validations[field.key];
-    });
-    this.userForm = new FormGroup(this.userForm, [
-      CustomValidators.MatchValidator('password', 'passwordConfirmation'),
-    ]);
-  }
   sendForm() {
-    if (this.userForm.valid) {
-      this.handleOnSubmit.emit(this.userForm.value);
+    if (this.formControls.valid) {
+      this.handleOnSubmit.emit(this.formControls.value);
     } else {
       this.errorMessage = 'Hay campos incompletos';
-      this.userForm.markAllAsTouched();
-      this.userForm.updateValueAndValidity();
+      this.formControls.markAllAsTouched();
+      this.formControls.updateValueAndValidity();
     }
   }
 
   matchError(field: IFields) {
     if (
-      this.userForm.get(field.key)?.invalid &&
-      this.userForm.get(field.key)?.touched
+      this.formControls.get(field.key)?.invalid &&
+      this.formControls.get(field.key)?.touched
     ) {
       return true;
     }
 
     if (field.type == 'password') {
       return (
-        this.userForm.getError('mismatch') &&
-        this.userForm.get('passwordConfirmation')?.touched
+        this.formControls.getError('mismatch') &&
+        this.formControls.get('passwordConfirmation')?.touched
       );
     }
   }
