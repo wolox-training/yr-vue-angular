@@ -5,10 +5,10 @@ import { fireEvent, render, waitFor } from '@testing-library/angular';
 import { screen } from '@testing-library/dom';
 import '@testing-library/jest-dom';
 import { IFields } from 'src/app/interfaces/global.interface';
-import { AppRoutingModule } from '../../app-routing.module';
-import { FormContainerComponent } from '../../components/form-container/form-container.component';
 import { SignUpRoutingModule } from './sign-up-routing.module';
 import { SignUpComponent } from './sign-up.component';
+import { AppRoutingModule } from '../../app-routing.module';
+import { FormContainerComponent } from '../../components/form-container/form-container.component';
 import { SIGN_UP_FIELDS } from '../../constants/formAccount';
 
 describe('FormContainerComponent', () => {
