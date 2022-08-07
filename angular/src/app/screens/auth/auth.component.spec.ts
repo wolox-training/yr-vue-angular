@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { render } from '@testing-library/angular';
 import { fireEvent, screen } from '@testing-library/dom';
 import '@testing-library/jest-dom';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 describe('Render auth component', () => {
   let routerSpy = { navigate: jest.fn() };
