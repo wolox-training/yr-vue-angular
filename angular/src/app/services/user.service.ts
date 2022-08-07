@@ -33,11 +33,16 @@ export class UserService {
       },
     );
   }
+
   createSession(token: string): void {
     localStorage.setItem('userToken', token);
   }
 
   signOff() {
     localStorage.removeItem('userToken');
+  }
+
+  isLogin() {
+    return !!localStorage.getItem('userToken');
   }
 }

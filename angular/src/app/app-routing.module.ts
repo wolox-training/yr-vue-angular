@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: 'books',
     loadChildren: () =>
-      import('./screens/books/books.module').then((m) => m.BooksModule),
+      import('./screens/auth/auth.module').then((m) => m.AuthModule),
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
