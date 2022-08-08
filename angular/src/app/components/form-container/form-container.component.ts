@@ -12,29 +12,29 @@ export class FormContainerComponent {
   @Input() buttonSend!: string;
   @Output() handleOnSubmit = new EventEmitter<IUser>();
   @Input() errorMessage!: string;
-  @Input() formControls!: FormGroup;
+  @Input() FormGroup!: FormGroup;
 
   sendForm() {
-    if (this.formControls.valid) {
-      this.handleOnSubmit.emit(this.formControls.value);
+    if (this.FormGroup.valid) {
+      this.handleOnSubmit.emit(this.FormGroup.value);
     } else {
       this.errorMessage = 'Hay campos incompletos';
-      this.formControls.markAllAsTouched();
-      this.formControls.updateValueAndValidity();
+      this.FormGroup.markAllAsTouched();
+      this.FormGroup.updateValueAndValidity();
     }
   }
 
   matchError(field: IFields) {
     if (
-      this.formControls.get(field.key)?.invalid &&
-      this.formControls.get(field.key)?.touched
+      this.FormGroup.get(field.key)?.invalid &&
+      this.FormGroup.get(field.key)?.touched
     ) {
       return true;
     }
     if (field.type == 'password') {
       return (
-        this.formControls.getError('mismatch') &&
-        this.formControls.get('passwordConfirmation')?.touched
+        this.FormGroup.getError('mismatch') &&
+        this.FormGroup.get('passwordConfirmation')?.touched
       );
     }
   }

@@ -1,10 +1,11 @@
-import { HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { HttpResponse } from '@angular/common/http';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IUser } from 'src/app/interfaces/global.interface';
 import { StatusRequest } from '../../constants/code-request';
 import { LOGIN_FIELDS } from '../../constants/form-account';
-import { IUser } from 'src/app/interfaces/global.interface';
+import { REGEX } from '../../constants/regex-accounts';
 import { UserService } from '../../services/user.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +18,11 @@ export class LoginComponent {
 
   constructor(private userService: UserService) {}
 
-  formControls = new FormGroup({
+  FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{6,}'),
+      Validators.pattern(REGEX.password),
     ]),
   });
 

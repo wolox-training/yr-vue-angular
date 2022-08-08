@@ -1,4 +1,4 @@
-<app-form-container [formFields]="fields" [formControls]="formControls" (handleOnSubmit)="handleOnSubmit($event)"
+<app-form-container [formFields]="fields" [FormGroup]="FormGroup" (handleOnSubmit)="handleOnSubmit($event)"
   [buttonSend]="buttonSend" [errorMessage]="errorMessage">
   <a routerLink="/sign-up" class="router-link-primary">Sing Up</a>
 </app-form-container>

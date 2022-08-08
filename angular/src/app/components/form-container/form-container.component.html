@@ -1,6 +1,6 @@
 <div class="form-content">
   <img src="assets/logo_full_color.svg" alt="wolox-logo" class="logo" />
-  <form [formGroup]="formControls" (ngSubmit)="sendForm()" role="form">
+  <form [formGroup]="FormGroup" (ngSubmit)="sendForm()" role="form">
     <div *ngFor="let field of formFields" class="form-group">
       <label [for]="field.label" class="label-account" [innerHTML]="field.label"></label>
       <input [type]="field.type" [id]="field.label" class="input-text-account" [formControlName]="field.key" />

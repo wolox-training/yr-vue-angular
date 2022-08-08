@@ -1,11 +1,12 @@
-import { HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { SIGN_UP_FIELDS } from '../../constants/form-account';
-import { IUser } from 'src/app/interfaces/global.interface';
-import { UserService } from '../../services/user.service';
-import { StatusRequest } from 'src/app/constants/code-request';
+import { HttpResponse } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from 'src/app/helpers/utilities/custom-validators';
+import { IUser } from 'src/app/interfaces/global.interface';
+import { StatusRequest } from '../../constants/code-request';
+import { SIGN_UP_FIELDS } from '../../constants/form-account';
+import { REGEX } from '../../constants/regex-accounts';
+import { CustomValidators } from '../../helpers/utilities/custom-validators';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,14 +18,14 @@ export class SignUpComponent {
 
   constructor(private userService: UserService) {}
 
-  formControls = new FormGroup(
+  FormGroup = new FormGroup(
     {
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
-        Validators.pattern('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{6,}'),
+        Validators.pattern(REGEX.password),
       ]),
       passwordConfirmation: new FormControl('', [Validators.required]),
     },
