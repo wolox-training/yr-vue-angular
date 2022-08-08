@@ -7,30 +7,26 @@ import '@testing-library/jest-dom';
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { AppRoutingModule } from '../../app-routing.module';
-import { FormContainerComponent } from '../../components/form-container/form-container.component';
 import { LOGIN_FIELDS } from '../../constants/form-account';
+import { FormContainerModule } from '../../components/form-container/form-container.module';
 import { IFields } from 'src/app/interfaces/global.interface';
 
-describe('FormContainerComponent', () => {
-  const loginUserMock = jest.fn();
+describe('Render LoginComponent', () => {
   beforeEach(async () => {
-    render(FormContainerComponent, {
-      declarations: [LoginComponent, FormContainerComponent],
+    render(LoginComponent, {
+      declarations: [LoginComponent],
       imports: [
         CommonModule,
         LoginRoutingModule,
         ReactiveFormsModule,
         HttpClientModule,
         AppRoutingModule,
+        FormContainerModule,
       ],
       componentProperties: {
-        formFields: LOGIN_FIELDS,
+        fields: LOGIN_FIELDS,
         buttonSend: 'Login',
-        handleOnSubmit: {
-          emit: loginUserMock,
-        } as any,
       },
-      providers: [{ provide: APP_BASE_HREF, useValue: '/my/app' }],
     });
   });
 
@@ -45,23 +41,24 @@ describe('FormContainerComponent', () => {
 
   it('check fields with incorrect validation', async () => {
     const email = screen.getByLabelText(/Email/i);
+    const button = screen.getByText('Login');
     addValueEvent(email, 'ramos111com12');
-    await waitFor(() => fireEvent.click(screen.getByText('Login')));
+    await waitFor(() => fireEvent.blur(email));
 
     expect(
       screen.getByText('El formato de mail no es correcto'),
     ).toBeInTheDocument();
-    expect(loginUserMock).not.toHaveBeenCalled();
+
+    expect(button).toBeDisabled();
   });
 
   it('submitting correct form ', async () => {
     const email = screen.getByLabelText('Email');
     const password = screen.getByLabelText('Password');
     addValueEvent(email, 'samir.hernando@wolox.co');
-    addValueEvent(password, 'Asd123');
-    await waitFor(() => fireEvent.click(screen.getByText('Login')));
-
-    expect(loginUserMock).toHaveBeenCalled();
+    addValueEvent(password, 'Asd1234');
+    const button = screen.getByText('Login');
+    expect(button).toBeEnabled();
   });
 });
 

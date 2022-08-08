@@ -15,16 +15,15 @@ export class LoginComponent {
   fields = LOGIN_FIELDS;
   buttonSend = 'Login';
   errorMessage!: string;
-
-  constructor(private userService: UserService) {}
-
-  FormGroup = new FormGroup({
+  formGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(REGEX.password),
     ]),
   });
+
+  constructor(private userService: UserService) {}
 
   handleOnSubmit(value: IUser): void {
     this.errorMessage = '';

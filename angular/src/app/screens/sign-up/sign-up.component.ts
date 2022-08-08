@@ -15,10 +15,7 @@ import { UserService } from '../../services/user.service';
 export class SignUpComponent {
   fields = SIGN_UP_FIELDS;
   buttonSend = 'Sign Up';
-
-  constructor(private userService: UserService) {}
-
-  FormGroup = new FormGroup(
+  formGroup = new FormGroup(
     {
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
@@ -31,6 +28,8 @@ export class SignUpComponent {
     },
     [CustomValidators.MatchValidator('password', 'passwordConfirmation')],
   );
+
+  constructor(private userService: UserService) {}
 
   handleOnSubmit(value: IUser): void {
     this.userService
