@@ -9,8 +9,9 @@ import { UserService } from '../../services/user.service';
 })
 export class NavbarComponent {
   constructor(private userService: UserService, private router: Router) {}
+
   logOut() {
-    this.userService.signOff();
+    this.userService.logOut();
     this.router.navigate(['/login']);
   }
 }

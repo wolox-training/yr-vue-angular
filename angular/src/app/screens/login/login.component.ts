@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IUser } from 'src/app/interfaces/global.interface';
+import { IAuthUser, IUser } from 'src/app/interfaces/global.interface';
 import { StatusRequest } from '../../constants/code-request';
 import { LOGIN_FIELDS } from '../../constants/form-account';
 import { REGEX } from '../../constants/regex-accounts';
@@ -33,7 +33,12 @@ export class LoginComponent {
         if (response.status === StatusRequest.Ok) {
           const token = response.headers.get('Access-Token');
           if (token) {
-            this.userService.createSession(token);
+            const userAuthData: IAuthUser = {
+              token: token,
+              client: response.headers.get('client') || '',
+              uid: response.headers.get('uid') || '',
+            };
+            this.userService.setToken(userAuthData);
             this.router.navigate(['/books']);
           }
         }
