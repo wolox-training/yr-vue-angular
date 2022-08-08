@@ -1,6 +1,5 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormControl } from '@angular/forms';
-import { CustomValidators } from '../../helpers/utilities/custom-validators';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { IFields, IUser } from 'src/app/interfaces/global.interface';
 
 @Component({
@@ -32,7 +31,6 @@ export class FormContainerComponent {
     ) {
       return true;
     }
-
     if (field.type == 'password') {
       return (
         this.formControls.getError('mismatch') &&
