@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IUser } from 'src/app/interfaces/global.interface';
+import { IAuthUser, IUser } from 'src/app/interfaces/global.interface';
 import { environment } from '../../environments/environment';
 import { snakeCaseSerializer } from '../helpers/utilities/serializer';
 
@@ -32,5 +32,13 @@ export class UserService {
         observe: 'response',
       },
     );
+  }
+
+  setToken(token: IAuthUser): void {
+    localStorage.setItem('userToken', JSON.stringify(token));
+  }
+
+  logOut() {
+    localStorage.removeItem('userToken');
   }
 }

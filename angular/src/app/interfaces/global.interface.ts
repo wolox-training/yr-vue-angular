@@ -13,3 +13,8 @@ export interface IUser {
   passwordConfirmation: string;
   locale?: string;
 }
+export interface IAuthUser {
+  token: string;
+  uid: string;
+  client: string;
+}

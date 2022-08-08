@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IUser } from 'src/app/interfaces/global.interface';
+import { Router } from '@angular/router';
+import { IAuthUser, IUser } from 'src/app/interfaces/global.interface';
 import { StatusRequest } from '../../constants/code-request';
 import { LOGIN_FIELDS } from '../../constants/form-account';
 import { REGEX } from '../../constants/regex-accounts';
@@ -23,14 +24,23 @@ export class LoginComponent {
     ]),
   });
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   handleOnSubmit(value: IUser): void {
     this.errorMessage = '';
     this.userService.login(value).subscribe(
       (response: HttpResponse<Object>) => {
         if (response.status === StatusRequest.Ok) {
-          console.log(response.headers.get('Access-Token'));
+          const token = response.headers.get('Access-Token');
+          if (token) {
+            const userAuthData: IAuthUser = {
+              token: token,
+              client: response.headers.get('client') || '',
+              uid: response.headers.get('uid') || '',
+            };
+            this.userService.setToken(userAuthData);
+            this.router.navigate(['/books']);
+          }
         }
       },
       (error: any) => {
