@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Validators, FormGroup, FormControl } from '@angular/forms';
-import { CustomValidators } from '../../helpers/utilities/customValidators';
+import { FormGroup } from '@angular/forms';
 import { IFields, IUser } from 'src/app/interfaces/global.interface';
 
 @Component({
@@ -12,39 +11,30 @@ export class FormContainerComponent {
   @Input() formFields!: IFields[];
   @Input() buttonSend!: string;
   @Output() handleOnSubmit = new EventEmitter<IUser>();
-
-  userForm: any = new FormGroup(
-    {
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
-      passwordConfirmation: new FormControl('', [Validators.required]),
-    },
-    [CustomValidators.MatchValidator('password', 'passwordConfirmation')],
-  );
+  @Input() errorMessage!: string;
+  @Input() formGroup!: FormGroup;
 
   sendForm() {
-    if (this.userForm.valid) {
-      this.handleOnSubmit.emit(this.userForm.value);
+    if (this.formGroup.valid) {
+      this.handleOnSubmit.emit(this.formGroup.value);
     } else {
-      this.userForm.markAllAsTouched();
-      this.userForm.updateValueAndValidity();
+      this.errorMessage = 'Hay campos incompletos';
+      this.formGroup.markAllAsTouched();
+      this.formGroup.updateValueAndValidity();
     }
   }
 
   matchError(field: IFields) {
     if (
-      this.userForm.get(field.key)?.invalid &&
-      this.userForm.get(field.key)?.touched
+      this.formGroup.get(field.key)?.invalid &&
+      this.formGroup.get(field.key)?.touched
     ) {
       return true;
     }
-
     if (field.type == 'password') {
       return (
-        this.userForm.getError('mismatch') &&
-        this.userForm.get('passwordConfirmation')?.touched
+        this.formGroup.getError('mismatch') &&
+        this.formGroup.get('passwordConfirmation')?.touched
       );
     }
   }

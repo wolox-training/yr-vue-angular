@@ -22,12 +22,28 @@ export const SIGN_UP_FIELDS = [
     label: 'Password',
     type: 'password',
     errorMessage:
-      'El password es requerido y debe contener al menos 1 mayúscula, 1 minúscula, 1 número y 1 caracter',
+      'La contraseña es requerida y debe contener al menos 1 mayúscula, 1 minúscula, 1 número y 1 carácter',
   },
   {
     key: 'passwordConfirmation',
     label: 'Confirmación de Password',
     type: 'password',
-    errorMessage: 'La confirmación debe coincidir con el password',
+    errorMessage: 'La confirmación debe coincidir con el campo password',
+  },
+];
+
+export const LOGIN_FIELDS = [
+  {
+    key: 'email',
+    label: 'Email',
+    type: 'email',
+    errorMessage: 'El formato de mail no es correcto',
+  },
+  {
+    key: 'password',
+    label: 'Password',
+    type: 'password',
+    errorMessage:
+      'La contraseña es requerida y debe contener al menos 1 mayúscula, 1 minúscula, 1 número y 1 carácter',
   },
 ];

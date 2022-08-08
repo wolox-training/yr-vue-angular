@@ -15,9 +15,18 @@ export class UserService {
 
   createUser(user: IUser): Observable<HttpResponse<object>> {
     user.locale = 'en';
-
     return this.http.post(
       `${this.API}/api/v1/users`,
+      snakeCaseSerializer.serialize(user),
+      {
+        observe: 'response',
+      },
+    );
+  }
+
+  login(user: IUser) {
+    return this.http.post(
+      `${this.API}/api/v1/users/sign_in`,
       snakeCaseSerializer.serialize(user),
       {
         observe: 'response',

@@ -1,0 +1,38 @@
+@import '../variables/colors';
+
+.alert {
+  animation-duration: 5s;
+  animation-name: slidein;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 5px $silver;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
+}
+
+@mixin alert($name, $bgColor) {
+  .#{$name} {
+    background-color: #{$bgColor};
+    border-left: 5px solid $red;
+  }
+}
+
+@include alert(danger-alert, $light-red);
+
+@keyframes slidein {
+  0% {
+    transform: translateX(100%);
+  }
+
+  50% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}

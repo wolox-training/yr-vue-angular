@@ -1,13 +1,17 @@
 <div class="form-content">
   <img src="assets/logo_full_color.svg" alt="wolox-logo" class="logo" />
-  <form [formGroup]="userForm" (ngSubmit)="sendForm()" role="form">
+  <form [formGroup]="formGroup" (ngSubmit)="sendForm()" role="form">
     <div *ngFor="let field of formFields" class="form-group">
       <label [for]="field.label" class="label-account" [innerHTML]="field.label"></label>
       <input [type]="field.type" [id]="field.label" class="input-text-account" [formControlName]="field.key" />
       <span class="error-account" data-testid="error-span" *ngIf="matchError(field)" [innerHTML]="field.errorMessage">
       </span>
     </div>
-    <input type="submit" [value]="buttonSend" class="button" />
+    <input type="submit" [value]="buttonSend" class="button" [disabled]="formGroup.invalid" />
   </form>
+  <hr class="line-form" />
   <ng-content></ng-content>
+</div>
+<div *ngIf="errorMessage" class="alert danger-alert">
+  <h3>{{errorMessage}} </h3>
 </div>
