@@ -8,9 +8,9 @@ import { IFields, IUser } from 'src/app/interfaces/global.interface';
   styleUrls: ['./form-container.component.scss'],
 })
 export class FormContainerComponent {
+  @Output() handleOnSubmit = new EventEmitter<IUser>();
   @Input() formFields!: IFields[];
   @Input() buttonSend!: string;
-  @Output() handleOnSubmit = new EventEmitter<IUser>();
   @Input() errorMessage!: string;
   @Input() formGroup!: FormGroup;
 

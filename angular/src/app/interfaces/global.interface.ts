@@ -4,6 +4,7 @@ export interface IFields {
   type: string;
   errorMessage: string;
 }
+
 export interface IUser {
   id: number;
   firstName: string;
@@ -13,6 +14,7 @@ export interface IUser {
   passwordConfirmation: string;
   locale?: string;
 }
+
 export interface IAuthUser {
   token: string;
   uid: string;

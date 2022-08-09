@@ -15,10 +15,7 @@ import { UserService } from '../services/user.service';
 export class UnauthGuard implements CanActivate {
   constructor(private userService: UserService, private router: Router) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
-  ):
+  canActivate():
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean

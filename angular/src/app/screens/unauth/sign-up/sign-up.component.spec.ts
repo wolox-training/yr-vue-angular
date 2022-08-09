@@ -71,6 +71,7 @@ describe('Render SignUpComponent', () => {
     addValueEvent(password, 'Admin1234');
     addValueEvent(passwordConfirmation, 'Admin1234');
     await waitFor(() => fireEvent.click(button));
+
     expect(button).toBeEnabled();
   });
 });
