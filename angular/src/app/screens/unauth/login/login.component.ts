@@ -39,6 +39,7 @@ export class LoginComponent {
               uid: response.headers.get('uid') || '',
             };
             this.userService.setToken(userAuthData);
+            this.router.navigate(['/books']);
           }
         }
       },
