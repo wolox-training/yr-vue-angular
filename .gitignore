@@ -2,6 +2,7 @@
 
 # ignore Angular
 angular/dist/
+angular/coverage
 angular/coverage/
 angular/bazel-out
 angular/integration/bazel/bazel-*
