@@ -45,3 +45,18 @@
     color: $earls-green;
   }
 }
+
+.cart-add {
+  background: $earls-green;
+  border-radius: 2em;
+  bottom: 2px;
+  color: $white;
+  font-size: $card-button-add;
+  height: 32px;
+  line-height: 33px;
+  position: absolute;
+  right: 30px;
+  text-align: center;
+  transform: translate(20px, -5px);
+  width: 31px;
+}

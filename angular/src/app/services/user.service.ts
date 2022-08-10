@@ -45,4 +45,16 @@ export class UserService {
   isLogged() {
     return !!localStorage.getItem('userToken');
   }
+
+  getToken(): IAuthUser {
+    const activeToken = localStorage.getItem('userToken');
+    if (activeToken) {
+      return JSON.parse(activeToken);
+    }
+    return {
+      token: '',
+      client: '',
+      uid: '',
+    };
+  }
 }
