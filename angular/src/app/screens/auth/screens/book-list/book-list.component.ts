@@ -16,4 +16,7 @@ export class BookListComponent implements OnInit {
       this.books = response;
     });
   }
+  trackByBooks(index: number, item: IBook): number {
+    return item.id;
+  }
 }

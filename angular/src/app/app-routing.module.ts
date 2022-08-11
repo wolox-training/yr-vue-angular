@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 import { UnAuthGuard } from './guards/unauth.guard';
 
 const routes: Routes = [
@@ -9,25 +10,18 @@ const routes: Routes = [
     redirectTo: 'login',
   },
   {
-    path: 'sign-up',
-    canActivate: [UnAuthGuard],
-    loadChildren: () =>
-      import('./screens/unauth/sign-up/sign-up.module').then(
-        (m) => m.SignUpModule,
-      ),
-  },
-  {
-    path: 'login',
-    canActivate: [UnAuthGuard],
-    loadChildren: () =>
-      import('./screens/unauth/login/login.module').then((m) => m.LoginModule),
-  },
-  {
-    path: 'books',
+    path: 'auth',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./screens/auth/auth.module').then((m) => m.AuthModule),
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  {
+    path: 'un-auth',
+    canActivate: [UnAuthGuard],
+    loadChildren: () =>
+      import('./screens/un-auth/un-auth.module').then((m) => m.UnAuthModule),
+  },
+  { path: '**', redirectTo: 'un-auth', pathMatch: 'full' },
 ];
 
 @NgModule({

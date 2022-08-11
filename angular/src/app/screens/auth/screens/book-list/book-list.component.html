@@ -5,6 +5,15 @@
 </div>
 
 <div class="books-container">
-  <app-book-card data-testid="book-card" *ngFor="let book of books | filterBooks: inputSearch" [book]="book">
-  </app-book-card>
+  <ng-container *ngIf="(books | filterBooks: inputSearch).length === 0; else elseTemplate">
+    <div class="book-empy">
+      No hay resultados
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <app-book-card data-testid="book-card" *ngFor="
+        let book of books | filterBooks: inputSearch;
+        trackBy: trackByBooks" [book]="book">
+    </app-book-card>
+  </ng-template>
 </div>

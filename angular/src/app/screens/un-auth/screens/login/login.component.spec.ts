@@ -6,9 +6,9 @@ import { screen } from '@testing-library/dom';
 import '@testing-library/jest-dom';
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
-import { AppRoutingModule } from '../../../app-routing.module';
-import { LOGIN_FIELDS } from '../../../constants/form-account';
-import { FormContainerModule } from '../../../components/form-container/form-container.module';
+import { AppRoutingModule } from '../../../../app-routing.module';
+import { LOGIN_FIELDS } from '../../../../constants/form-account';
+import { FormContainerModule } from '../../../../components/form-container/form-container.module';
 import { IFields } from 'src/app/interfaces/global.interface';
 
 describe('Render LoginComponent', () => {

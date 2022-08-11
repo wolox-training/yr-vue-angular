@@ -3,10 +3,10 @@ import { HttpResponse } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IAuthUser, IUser } from 'src/app/interfaces/global.interface';
-import { StatusRequest } from '../../../constants/code-request';
-import { LOGIN_FIELDS } from '../../../constants/form-account';
-import { REGEX } from '../../../constants/regex-accounts';
-import { UserService } from '../../../services/user.service';
+import { StatusRequest } from '../../../../constants/code-request';
+import { LOGIN_FIELDS } from '../../../../constants/form-account';
+import { REGEX } from '../../../../constants/regex-accounts';
+import { UserService } from '../../../../services/user.service';
 
 @Component({
   selector: 'app-login',
