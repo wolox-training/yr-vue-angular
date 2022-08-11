@@ -56,7 +56,7 @@ describe('Render LoginComponent', () => {
     const email = screen.getByLabelText('Email');
     const password = screen.getByLabelText('Password');
     addValueEvent(email, 'samir.hernando@wolox.co');
-    addValueEvent(password, 'Asd1234');
+    addValueEvent(password, 'Asd12345');
     const button = screen.getByText('Login');
     expect(button).toBeEnabled();
   });
