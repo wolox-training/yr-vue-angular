@@ -5,10 +5,12 @@ import { BooksService } from '../../../../services/books.service';
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
+  styleUrls: ['./book-list.component.scss'],
 })
 export class BookListComponent implements OnInit {
   books!: IBook[];
   inputSearch!: any;
+
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
@@ -16,6 +18,7 @@ export class BookListComponent implements OnInit {
       this.books = response;
     });
   }
+
   trackByBooks(index: number, item: IBook): number {
     return item.id;
   }

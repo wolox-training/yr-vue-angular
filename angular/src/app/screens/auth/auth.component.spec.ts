@@ -51,6 +51,7 @@ describe('Render auth component', () => {
 
     expect(routerSpy.navigate).toHaveBeenCalledWith([Routes.login]);
   });
+
   it('grants access', () => {
     const canActivate = guard.canActivate(dummyRoute, fakeRouterState(fakeUrl));
 
