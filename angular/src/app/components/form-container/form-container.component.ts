@@ -10,9 +10,9 @@ import { IFields, IUser } from 'src/app/interfaces/global.interface';
 export class FormContainerComponent {
   @Input() formFields!: IFields[];
   @Input() buttonSend!: string;
-  @Output() handleOnSubmit = new EventEmitter<IUser>();
   @Input() errorMessage!: string;
   @Input() formGroup!: FormGroup;
+  @Output() handleOnSubmit = new EventEmitter<IUser>();
 
   sendForm() {
     if (this.formGroup.valid) {

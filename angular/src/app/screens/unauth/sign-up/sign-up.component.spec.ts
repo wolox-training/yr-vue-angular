@@ -6,9 +6,9 @@ import { screen } from '@testing-library/dom';
 import '@testing-library/jest-dom';
 import { SignUpRoutingModule } from './sign-up-routing.module';
 import { SignUpComponent } from './sign-up.component';
-import { AppRoutingModule } from '../../app-routing.module';
-import { SIGN_UP_FIELDS } from '../../constants/form-account';
-import { FormContainerModule } from '../../components/form-container/form-container.module';
+import { AppRoutingModule } from '../../../app-routing.module';
+import { SIGN_UP_FIELDS } from '../../../constants/form-account';
+import { FormContainerModule } from '../../../components/form-container/form-container.module';
 import { IFields } from 'src/app/interfaces/global.interface';
 
 describe('Render SignUpComponent', () => {
@@ -71,6 +71,7 @@ describe('Render SignUpComponent', () => {
     addValueEvent(password, 'Admin1234');
     addValueEvent(passwordConfirmation, 'Admin1234');
     await waitFor(() => fireEvent.click(button));
+
     expect(button).toBeEnabled();
   });
 });
