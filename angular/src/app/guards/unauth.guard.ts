@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, UrlTree } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import { Routes } from '../constants/routes';
 import { UserService } from '../services/user.service';
@@ -18,17 +24,11 @@ export class UnAuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-<<<<<<< HEAD
-    const isLogin = this.userService.isLogged();
-    if (isLogin) {
-      return this.router.navigate(['/books']);
-=======
     const isLogged = this.userService.isLogged();
     if (isLogged) {
       this.router.navigate([Routes.books]);
 
       return true;
->>>>>>> 6c7f379 (implement auth and unauth unit tests)
     }
 
     return !isLogged;
