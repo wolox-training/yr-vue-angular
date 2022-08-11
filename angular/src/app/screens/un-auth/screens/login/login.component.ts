@@ -7,6 +7,7 @@ import { StatusRequest } from '../../../../constants/code-request';
 import { LOGIN_FIELDS } from '../../../../constants/form-account';
 import { REGEX } from '../../../../constants/regex-accounts';
 import { UserService } from '../../../../services/user.service';
+import { Routes } from 'src/app/constants/routes';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent {
       Validators.pattern(REGEX.password),
     ]),
   });
-
+  appRoutes = Routes;
   constructor(private userService: UserService, private router: Router) {}
 
   handleOnSubmit(value: IUser): void {
@@ -39,7 +40,7 @@ export class LoginComponent {
               uid: response.headers.get('uid') || '',
             };
             this.userService.setToken(userAuthData);
-            this.router.navigate(['/books']);
+            this.router.navigate([Routes.books]);
           }
         }
       },

@@ -2,11 +2,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import {
   ActivatedRouteSnapshot,
-  Params,
-  Route,
   Router,
   RouterStateSnapshot,
-  UrlSegment,
 } from '@angular/router';
 import { render } from '@testing-library/angular';
 import { fireEvent, screen } from '@testing-library/dom';
@@ -17,11 +14,14 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { AuthGuard } from '../../guards/auth.guard';
 import { UserService } from '../../services/user.service';
 import { mockToken } from '../../helpers/mocks/mock-token';
+import { Routes } from 'src/app/constants/routes';
 
 describe('Render auth component', () => {
   let routerSpy: any = { navigate: jest.fn() };
   let guard: AuthGuard;
-  let serviceStub: Partial<UserService>;
+  let serviceStub: any = {
+    isLogged: () => !!localStorage.getItem('userToken'),
+  };
   const dummyRoute = {} as ActivatedRouteSnapshot;
   const fakeUrl = 'books';
 
@@ -34,7 +34,6 @@ describe('Render auth component', () => {
   });
 
   beforeEach(() => {
-    serviceStub = {};
     guard = new AuthGuard(serviceStub as UserService, routerSpy);
     localStorage.setItem('userToken', JSON.stringify(mockToken));
   });
@@ -50,18 +49,14 @@ describe('Render auth component', () => {
     const btnLogout = screen.getByText('Logout');
     fireEvent.click(btnLogout);
 
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/login']);
+    expect(routerSpy.navigate).toHaveBeenCalledWith([Routes.login]);
   });
   it('grants access', () => {
-    const isAccessGranted = guard.checkLogin(fakeUrl);
-
-    expect(isAccessGranted).toBe(true);
-  });
-  it('grants route access', () => {
     const canActivate = guard.canActivate(dummyRoute, fakeRouterState(fakeUrl));
 
     expect(canActivate).toBe(true);
   });
+
   it('enter a route without a token', () => {
     localStorage.removeItem('userToken');
     const canActivate = guard.canActivate(dummyRoute, fakeRouterState(fakeUrl));

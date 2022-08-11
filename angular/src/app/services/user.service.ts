@@ -42,7 +42,7 @@ export class UserService {
     localStorage.removeItem('userToken');
   }
 
-  isLogged() {
+  isLogged(): boolean {
     return !!localStorage.getItem('userToken');
   }
 
