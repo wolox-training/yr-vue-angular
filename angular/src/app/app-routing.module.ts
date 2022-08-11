@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UnauthGuard } from './guards/unauth.guard';
+import { UnAuthGuard } from './guards/unauth.guard';
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'sign-up',
-    canActivate: [UnauthGuard],
+    canActivate: [UnAuthGuard],
     loadChildren: () =>
       import('./screens/unauth/sign-up/sign-up.module').then(
         (m) => m.SignUpModule,
@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    canActivate: [UnauthGuard],
+    canActivate: [UnAuthGuard],
     loadChildren: () =>
       import('./screens/unauth/login/login.module').then((m) => m.LoginModule),
   },
