@@ -20,12 +20,11 @@ export class BookListComponent implements OnInit {
       this.books = response;
     });
   }
+  get hasBooks(): boolean {
+    return this.pipe.transform(this.books, this.inputSearch).length > 0;
+  }
 
   trackByBooks(index: number, item: IBook): number {
     return item.id;
-  }
-
-  get hasBooks(): boolean {
-    return this.pipe.transform(this.books, this.inputSearch).length > 0;
   }
 }
