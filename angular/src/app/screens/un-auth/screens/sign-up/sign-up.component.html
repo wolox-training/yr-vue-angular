@@ -1,4 +1,8 @@
-<app-form-container [formFields]="fields" [formGroup]="formGroup" (handleOnSubmit)="handleOnSubmit($event)"
-  [buttonSend]="buttonSend">
+<app-form-container
+  [formFields]="fields"
+  [formGroup]="formGroup"
+  (handleOnSubmit)="handleOnSubmit($event)"
+  [buttonSend]="buttonSend"
+>
   <a [routerLink]="appRoutes.login" class="router-link-primary">Login</a>
 </app-form-container>

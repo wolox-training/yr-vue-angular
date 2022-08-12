@@ -1,7 +1,7 @@
 @import 'src/styles/variables/colors';
 @import 'src/styles/variables/fonts';
 
-@mixin text-ellipsis {
+.text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -29,7 +29,6 @@
 }
 
 .book-title {
-  @include text-ellipsis;
   font-size: $book-title;
   font-weight: 700;
   line-height: 18px;
@@ -39,7 +38,6 @@
 }
 
 .book-author {
-  @include text-ellipsis;
   color: $book-gray;
   font-size: $book-author;
   height: 18px;

@@ -1,4 +1,9 @@
-<app-form-container [formFields]="fields" [formGroup]="formGroup" (handleOnSubmit)="handleOnSubmit($event)"
-  [buttonSend]="buttonSend" [errorMessage]="errorMessage">
+<app-form-container
+  [formFields]="fields"
+  [formGroup]="formGroup"
+  (handleOnSubmit)="handleOnSubmit($event)"
+  [buttonSend]="buttonSend"
+  [errorMessage]="errorMessage"
+>
   <a [routerLink]="appRoutes.signup" class="router-link-primary">Sing Up</a>
 </app-form-container>

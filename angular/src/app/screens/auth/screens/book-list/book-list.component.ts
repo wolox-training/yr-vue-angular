@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IBook } from 'src/app/interfaces/global.interface';
+import { FilterBooksPipe } from 'src/app/pipes/filter-books.pipe';
 import { BooksService } from '../../../../services/books.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { BooksService } from '../../../../services/books.service';
 })
 export class BookListComponent implements OnInit {
   books!: IBook[];
-  inputSearch!: any;
+  inputSearch!: string;
+  pipe: FilterBooksPipe = new FilterBooksPipe();
 
   constructor(private booksService: BooksService) {}
 
@@ -21,5 +23,9 @@ export class BookListComponent implements OnInit {
 
   trackByBooks(index: number, item: IBook): number {
     return item.id;
+  }
+
+  get hasBooks(): boolean {
+    return this.pipe.transform(this.books, this.inputSearch).length > 0;
   }
 }

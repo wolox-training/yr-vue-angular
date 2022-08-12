@@ -8,7 +8,7 @@ import { BookCardComponent } from '../../../../components/book-card/book-card.co
 import { mockBook } from '../../../../helpers/mocks/mock-books';
 import { FilterBooksPipe } from '../../../../pipes/filter-books.pipe';
 
-describe('BoolistComponent ', () => {
+describe('BooklistComponent ', () => {
   beforeEach(async () => {
     await render(BookListComponent, {
       declarations: [BookListComponent, BookCardComponent, FilterBooksPipe],

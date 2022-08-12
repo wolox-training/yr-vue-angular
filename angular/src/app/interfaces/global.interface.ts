@@ -23,12 +23,12 @@ export interface IAuthUser {
 
 export interface IBook {
   author: string;
-  created_at: string;
+  createdAt: string;
   editor: string;
   genre: string;
   id: number;
-  image_url: string;
+  imageUrl: string;
   title: string;
-  updated_at: string;
+  updatedAt: string;
   year: string;
 }

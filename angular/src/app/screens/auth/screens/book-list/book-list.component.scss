@@ -1,12 +1,6 @@
 @import 'src/styles/variables/colors';
 @import 'src/styles/variables/fonts';
 
-@mixin text-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .books-container {
   display: flex;
   flex-wrap: wrap;

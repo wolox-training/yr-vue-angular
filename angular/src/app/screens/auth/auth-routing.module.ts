@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth.component';
-import { BookListComponent } from './screens/book-list/book-list.component';
 
 const routes: Routes = [
   {
@@ -10,7 +9,10 @@ const routes: Routes = [
     children: [
       {
         path: 'books',
-        component: BookListComponent,
+        loadChildren: () =>
+          import('./screens/book-list/book-list.module').then(
+            (m) => m.BookListModule,
+          ),
       },
       {
         path: '',

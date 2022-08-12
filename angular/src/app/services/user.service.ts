@@ -47,14 +47,13 @@ export class UserService {
   }
 
   getToken(): IAuthUser {
-    const activeToken = localStorage.getItem('userToken');
-    if (activeToken) {
-      return JSON.parse(activeToken);
-    }
-    return {
-      token: '',
-      client: '',
-      uid: '',
-    };
+    const token: string = localStorage.getItem('userToken') || '';
+    return (
+      JSON.parse(token) || {
+        token: '',
+        client: '',
+        uid: '',
+      }
+    );
   }
 }
