@@ -9,7 +9,7 @@ import { snakeCaseSerializer } from '../helpers/utilities/serializer';
   providedIn: 'root',
 })
 export class UserService {
-  private API: string = environment.apiUrl;
+  private readonly API: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -48,12 +48,12 @@ export class UserService {
 
   getToken(): IAuthUser {
     const token: string = localStorage.getItem('userToken') || '';
-    return (
-      JSON.parse(token) || {
-        token: '',
-        client: '',
-        uid: '',
-      }
-    );
+    return token
+      ? JSON.parse(token)
+      : {
+          token: '',
+          client: '',
+          uid: '',
+        };
   }
 }

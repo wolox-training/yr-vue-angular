@@ -9,7 +9,7 @@ import { IBook } from '../interfaces/global.interface';
   providedIn: 'root',
 })
 export class BooksService {
-  private API: string = environment.apiUrl;
+  private readonly API: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 

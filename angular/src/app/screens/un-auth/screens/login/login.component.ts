@@ -25,6 +25,7 @@ export class LoginComponent {
     ]),
   });
   appRoutes = Routes;
+
   constructor(private userService: UserService, private router: Router) {}
 
   handleOnSubmit(value: IUser): void {
