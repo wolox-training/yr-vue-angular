@@ -1,0 +1,28 @@
+<button class="cart" (click)="openCart()">
+  <img src="assets/cart.png" />
+  <span class="cart-count">0</span>
+</button>
+<div class="popup" [ngClass]="isShowCart()">
+  <div class="popup-content">
+    <img class="close" src="assets/close.png" />
+    <div class="popup-title">
+      Tu carrito de compras
+      <div class="popup-container">
+        <div class="popup-content-details">
+          <div class="popup-content-item">
+            yoanthan book - ramos medina
+            <img class="popup-cover-delete" src="assets/delete.png" />
+          </div>
+          <div class="popup-content-item-line"></div>
+        </div>
+      </div>
+      <div *ngIf="emptyCart">
+        <img class="popup-empty-img" src="assets/cart-empty.png" />
+        <div class="popup-empty-title">El carrito está vacío</div>
+        <div class="popup-empty-desciption">
+          Parece que no tenés items en tu carrito de compras.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

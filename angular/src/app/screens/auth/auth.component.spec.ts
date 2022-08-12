@@ -10,7 +10,7 @@ import { fireEvent, screen } from '@testing-library/dom';
 import '@testing-library/jest-dom';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthGuard } from '../../guards/auth.guard';
 import { UserService } from '../../services/user.service';
 import { mockToken } from '../../helpers/mocks/mock-token';
