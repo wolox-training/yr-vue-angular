@@ -2,5 +2,12 @@
   <img class="book-cover" [src]="book.imageUrl" [alt]="book.title" />
   <span class="book-title text-ellipsis">{{ book.title }}</span>
   <span class="book-author text-ellipsis">{{ book.author }}</span>
-  <button class="cart-add" type="button">+</button>
+  <button
+    class="cart-add"
+    type="button"
+    data-testid="cart-add-button"
+    (click)="addBook()"
+  >
+    +
+  </button>
 </div>

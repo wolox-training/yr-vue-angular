@@ -113,15 +113,12 @@
 }
 
 .showPopup .popup-content {
-  animation: popup 0.3s forwards;
+  animation: 0.3s forwards;
   display: block;
 }
 
-.removePopup {
-  display: none;
-}
-
 .close {
+  cursor: pointer;
   float: right;
   height: 24px;
   width: 24px;

@@ -1,28 +1,38 @@
-<button class="cart" (click)="openCart()">
+<button class="cart" data-testid="button-open-cart" (click)="showCart()">
   <img src="assets/cart.png" />
-  <span class="cart-count">0</span>
+  <span class="cart-count">{{ booksCount }}</span>
 </button>
-<div class="popup" [ngClass]="isShowCart()">
+
+<div class="popup showPopup" *ngIf="openCart">
   <div class="popup-content">
-    <img class="close" src="assets/close.png" />
+    <img class="close" src="assets/close.png" (click)="showCart()" />
     <div class="popup-title">
       Tu carrito de compras
-      <div class="popup-container">
-        <div class="popup-content-details">
-          <div class="popup-content-item">
-            yoanthan book - ramos medina
-            <img class="popup-cover-delete" src="assets/delete.png" />
+      <ng-container *ngIf="hasBooks; else elseBook">
+        <div class="popup-container" *ngFor="let book of books">
+          <div class="popup-content-details">
+            <div class="popup-content-item">
+              {{ book.title }} - {{ book.author }}
+              <img
+                class="popup-cover-delete"
+                data-testid="button-delete-book"
+                (click)="deleteBook(book.id)"
+                src="assets/delete.png"
+              />
+            </div>
+            <div class="popup-content-item-line"></div>
           </div>
-          <div class="popup-content-item-line"></div>
         </div>
-      </div>
-      <div *ngIf="emptyCart">
-        <img class="popup-empty-img" src="assets/cart-empty.png" />
-        <div class="popup-empty-title">El carrito está vacío</div>
-        <div class="popup-empty-desciption">
-          Parece que no tenés items en tu carrito de compras.
+      </ng-container>
+      <ng-template #elseBook>
+        <div>
+          <img class="popup-empty-img" src="assets/cart-empty.png" />
+          <div class="popup-empty-title">El carrito está vacío</div>
+          <div class="popup-empty-desciption">
+            Parece que no tenés items en tu carrito de compras.
+          </div>
         </div>
-      </div>
+      </ng-template>
     </div>
   </div>
 </div>

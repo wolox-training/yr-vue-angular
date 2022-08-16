@@ -14,7 +14,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthGuard } from '../../guards/auth.guard';
 import { UserService } from '../../services/user.service';
 import { mockToken } from '../../helpers/mocks/mock-token';
-import { Routes } from 'src/app/constants/routes';
+import { Routes } from '../../constants/routes';
 
 describe('Render auth component', () => {
   let routerSpy: any = { navigate: jest.fn() };
