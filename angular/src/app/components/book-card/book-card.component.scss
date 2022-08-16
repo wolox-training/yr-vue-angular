@@ -1,0 +1,47 @@
+@import 'src/styles/variables/colors';
+@import 'src/styles/variables/fonts';
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 231px 67px;
+}
+
+.books {
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.5);
+  height: 300px;
+  margin: 0 36px 36px 0;
+  padding: 28px 28px 19px;
+  position: relative;
+  width: 198px;
+}
+
+.book-cover {
+  height: 200px;
+  max-width: 100%;
+  width: 142px;
+}
+
+.book-title {
+  font-size: $book-title;
+  font-weight: 700;
+  line-height: 18px;
+  max-width: 100%;
+  padding: 2px;
+  width: 106px
+}
+
+.book-author {
+  color: $book-gray;
+  font-size: $book-author;
+  height: 18px;
+  line-height: 18px;
+  max-width: 100%;
+  width: 109px;
+}

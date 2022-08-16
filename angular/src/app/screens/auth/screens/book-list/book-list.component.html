@@ -1,1 +1,31 @@
-<p>book-list works!</p>
+<div class="book-search">
+  <input
+    class="book-search-input"
+    name="inputSearch"
+    role="search"
+    [(ngModel)]="inputSearch"
+    type="search"
+    placeholder="Buscá por título del libro..."
+  />
+  <img
+    class="book-icon-search"
+    src="assets/search-icon.png"
+    alt="Search icon"
+  />
+</div>
+
+<div class="books-container">
+  <ng-container *ngIf="hasBooks; else elseTemplate">
+    <app-book-card
+      data-testid="book-card"
+      *ngFor="
+        let book of books | filterBooks: inputSearch;
+        trackBy: trackByBooks
+      "
+      [book]="book"
+    ></app-book-card>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="book-empty">No hay resultados</div>
+  </ng-template>
+</div>

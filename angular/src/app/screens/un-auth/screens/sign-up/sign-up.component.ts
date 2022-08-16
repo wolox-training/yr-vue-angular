@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUser } from 'src/app/interfaces/global.interface';
-import { StatusRequest } from '../../../constants/code-request';
-import { REGEX } from '../../../constants/regex-accounts';
-import { CustomValidators } from '../../../helpers/utilities/custom-validators';
-import { SIGN_UP_FIELDS } from '../../../constants/form-account';
-import { UserService } from '../../../services/user.service';
+import { StatusRequest } from '../../../../constants/code-request';
+import { REGEX } from '../../../../constants/regex-accounts';
+import { CustomValidators } from '../../../../helpers/utilities/custom-validators';
+import { SIGN_UP_FIELDS } from '../../../../constants/form-account';
+import { UserService } from '../../../../services/user.service';
+import { Routes } from 'src/app/constants/routes';
 
 @Component({
   selector: 'app-sign-up',
@@ -28,7 +29,7 @@ export class SignUpComponent {
     },
     [CustomValidators.MatchValidator('password', 'passwordConfirmation')],
   );
-
+  appRoutes = Routes;
   constructor(private userService: UserService) {}
 
   handleOnSubmit(value: IUser): void {

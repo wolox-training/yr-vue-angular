@@ -20,3 +20,15 @@ export interface IAuthUser {
   uid: string;
   client: string;
 }
+
+export interface IBook {
+  author: string;
+  createdAt: string;
+  editor: string;
+  genre: string;
+  id: number;
+  imageUrl: string;
+  title: string;
+  updatedAt: string;
+  year: string;
+}
