@@ -7,7 +7,7 @@ import { StatusRequest } from '../../../../constants/code-request';
 import { LOGIN_FIELDS } from '../../../../constants/form-account';
 import { REGEX } from '../../../../constants/regex-accounts';
 import { UserService } from '../../../../services/user.service';
-import { Routes } from 'src/app/constants/routes';
+import { Routes } from '../../../../constants/routes';
 
 @Component({
   selector: 'app-login',

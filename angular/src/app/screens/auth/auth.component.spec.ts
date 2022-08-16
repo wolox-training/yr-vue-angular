@@ -11,6 +11,7 @@ import '@testing-library/jest-dom';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { AuthGuard } from '../../guards/auth.guard';
 import { UserService } from '../../services/user.service';
 import { mockToken } from '../../helpers/mocks/mock-token';
@@ -27,7 +28,7 @@ describe('Render auth component', () => {
 
   beforeEach(async () => {
     render(AuthComponent, {
-      declarations: [AuthComponent, NavbarComponent],
+      declarations: [AuthComponent, NavbarComponent, ShoppingCartComponent],
       imports: [CommonModule, AuthRoutingModule, HttpClientModule],
       providers: [{ provide: Router, useValue: routerSpy }],
     });
