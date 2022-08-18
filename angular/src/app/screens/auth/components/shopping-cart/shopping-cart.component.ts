@@ -11,26 +11,26 @@ import { ShoppingCartService } from '../../../../services/shopping-cart.service'
 export class ShoppingCartComponent implements OnInit, OnDestroy {
   openCart: boolean = false;
   books: IBook[] = [];
-  booksSubscription!: Subscription;
+  shoppingSubscription!: Subscription;
   booksCount: number = 0;
 
   constructor(public shoppingService: ShoppingCartService) {}
 
   ngOnInit(): void {
-    this.booksSubscription = this.shoppingService
+    this.shoppingSubscription = this.shoppingService
       .getBooks()
-      .subscribe((response: IBook[]) => {
-        this.books = response;
-        this.booksCount = response.length;
+      .subscribe((response: IBook) => {
+        this.books.push(response);
+        this.booksCount = this.books.length;
       });
   }
 
   ngOnDestroy() {
-    this.booksSubscription.unsubscribe();
+    this.shoppingSubscription.unsubscribe();
   }
 
   get hasBooks(): boolean {
-    return this.books.length > 0 ? true : false;
+    return this.booksCount > 0;
   }
 
   showCart() {

@@ -1,11 +1,16 @@
 <button class="cart" data-testid="button-open-cart" (click)="showCart()">
-  <img src="assets/cart.png" />
+  <img src="assets/cart.png" alt="icon-cart" />
   <span class="cart-count">{{ booksCount }}</span>
 </button>
 
 <div class="popup showPopup" *ngIf="openCart">
   <div class="popup-content">
-    <img class="close" src="assets/close.png" (click)="showCart()" />
+    <img
+      alt="icon-close"
+      class="close"
+      src="assets/close.png"
+      (click)="showCart()"
+    />
     <div class="popup-title">
       Tu carrito de compras
       <ng-container *ngIf="hasBooks; else elseBook">
@@ -14,6 +19,7 @@
             <div class="popup-content-item">
               {{ book.title }} - {{ book.author }}
               <img
+                alt="icon-delete"
                 class="popup-cover-delete"
                 data-testid="button-delete-book"
                 (click)="deleteBook(book.id)"
@@ -26,11 +32,15 @@
       </ng-container>
       <ng-template #elseBook>
         <div>
-          <img class="popup-empty-img" src="assets/cart-empty.png" />
-          <div class="popup-empty-title">El carrito está vacío</div>
-          <div class="popup-empty-desciption">
-            Parece que no tenés items en tu carrito de compras.
-          </div>
+          <img
+            alt="icon-cart-empty"
+            class="popup-empty-img"
+            src="assets/cart-empty.png"
+          />
+          <span class="popup-empty-title">El carrito está vacío</span>
+          <span class="popup-empty-desciption">
+            Parece que no tienés items en tu carrito de compras.
+          </span>
         </div>
       </ng-template>
     </div>

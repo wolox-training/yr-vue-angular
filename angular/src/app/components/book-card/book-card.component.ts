@@ -12,7 +12,7 @@ export class BookCardComponent {
 
   constructor(private shoppingService: ShoppingCartService) {}
 
-  addBook() {
+  addBook(): void {
     this.shoppingService.setBook(this.book);
   }
 }

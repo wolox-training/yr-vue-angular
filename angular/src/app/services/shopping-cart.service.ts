@@ -7,11 +7,11 @@ import { IBook } from '../interfaces/global.interface';
 })
 export class ShoppingCartService {
   public booksSubject = new Subject<IBook[]>();
-  books: IBook[] = [];
+  private books: IBook[] = [];
 
   setBook(book: IBook) {
     this.books.push(book);
-    this.booksSubject.next(this.books);
+    this.updateSubject(this.books);
   }
 
   getBooks() {
@@ -20,6 +20,10 @@ export class ShoppingCartService {
 
   removeBook(id: number) {
     this.books = this.books.filter((book) => book.id !== id);
-    this.booksSubject.next(this.books);
+    this.updateSubject(this.books);
+  }
+
+  private updateSubject(books: IBook[]) {
+    this.booksSubject.next(books);
   }
 }
