@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IBook } from 'src/app/interfaces/global.interface';
-import { FilterBooksPipe } from 'src/app/pipes/filter-books.pipe';
+import { FilterBooksPipe } from '../../../../pipes/filter-books.pipe';
 import { BooksService } from '../../../../services/books.service';
 
 @Component({

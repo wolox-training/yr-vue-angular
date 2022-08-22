@@ -6,13 +6,12 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { render } from '@testing-library/angular';
-import { fireEvent, screen } from '@testing-library/dom';
+import { unAuthRoutingModule } from './un-auth-routing.module';
+import { UnAuthComponent } from './un-auth.component';
 import { Routes } from '../../constants/routes';
 import { UnAuthGuard } from '../../guards/unauth.guard';
 import { mockToken } from '../../helpers/mocks/mock-token';
 import { UserService } from '../../services/user.service';
-import { unAuthRoutingModule } from './un-auth-routing.module';
-import { UnAuthComponent } from './un-auth.component';
 
 describe('Render auth component', () => {
   let routerSpy: any = { navigate: jest.fn() };

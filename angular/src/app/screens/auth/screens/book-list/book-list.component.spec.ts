@@ -37,6 +37,11 @@ describe('BooklistComponent ', () => {
     expect(card).toHaveLength(1);
     expect(screen.getByText('Slow reading')).toBeInTheDocument();
   });
+  it('filter by bad search parameter', () => {
+    const input = screen.getByRole('search');
+    addValueEvent(input, 'Slow Cars');
+    expect(screen.getByText('No hay resultados')).toBeInTheDocument();
+  });
 });
 
 function addValueEvent(field: HTMLElement, value: string) {
