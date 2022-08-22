@@ -98,14 +98,13 @@
   height: 39px;
   line-height: 38px;
   margin: 0 0 24px;
-  text-align: center;
+  display: block;
 }
 
 .popup-empty-desciption {
   font-size: $popup-empty-desciption;
   height: 29px;
   line-height: 28px;
-  text-align: center;
 }
 
 .showPopup {
@@ -122,4 +121,10 @@
   float: right;
   height: 24px;
   width: 24px;
+}
+
+.cart-empty {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }

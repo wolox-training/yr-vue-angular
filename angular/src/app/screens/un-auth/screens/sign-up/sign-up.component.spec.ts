@@ -1,4 +1,4 @@
-import { CommonModule, APP_BASE_HREF } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { fireEvent, render, waitFor } from '@testing-library/angular';
@@ -10,6 +10,14 @@ import { AppRoutingModule } from '../../../../app-routing.module';
 import { SIGN_UP_FIELDS } from '../../../../constants/form-account';
 import { FormContainerModule } from '../../../../components/form-container/form-container.module';
 import { IFields } from 'src/app/interfaces/global.interface';
+
+function addValueEvent(field: HTMLElement, value: string) {
+  fireEvent.input(field, {
+    target: {
+      value: value,
+    },
+  });
+}
 
 describe('Render SignUpComponent', () => {
   beforeEach(async () => {
@@ -75,11 +83,3 @@ describe('Render SignUpComponent', () => {
     expect(button).toBeEnabled();
   });
 });
-
-function addValueEvent(field: HTMLElement, value: string) {
-  fireEvent.input(field, {
-    target: {
-      value: value,
-    },
-  });
-}

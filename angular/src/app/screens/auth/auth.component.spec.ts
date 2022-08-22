@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {
   ActivatedRouteSnapshot,
   Router,
@@ -8,17 +8,25 @@ import {
 import { render } from '@testing-library/angular';
 import { fireEvent, screen } from '@testing-library/dom';
 import '@testing-library/jest-dom';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { NavbarModule } from './components/navbar/navbar.module';
 import { AuthGuard } from '../../guards/auth.guard';
 import { UserService } from '../../services/user.service';
 import { mockToken } from '../../helpers/mocks/mock-token';
 import { Routes } from '../../constants/routes';
+import { TranslateMockPipe } from '../../helpers/mocks/translate-mock.pipe';
 
+function fakeRouterState(url: string): RouterStateSnapshot {
+  return {
+    url,
+  } as RouterStateSnapshot;
+}
 describe('Render auth component', () => {
   let routerSpy: any = { navigate: jest.fn() };
+
   let guard: AuthGuard;
   let serviceStub: any = {
     isLogged: () => !!localStorage.getItem('userToken'),
@@ -28,8 +36,22 @@ describe('Render auth component', () => {
 
   beforeEach(async () => {
     render(AuthComponent, {
-      declarations: [AuthComponent, NavbarComponent, ShoppingCartComponent],
-      imports: [CommonModule, AuthRoutingModule, HttpClientModule],
+      declarations: [AuthComponent, TranslateMockPipe],
+      imports: [
+        CommonModule,
+        AuthRoutingModule,
+        HttpClientModule,
+        NavbarModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: (http: HttpClient) => {
+              return new TranslateHttpLoader(http);
+            },
+            deps: [HttpClient],
+          },
+        }),
+      ],
       providers: [{ provide: Router, useValue: routerSpy }],
     });
   });
@@ -40,14 +62,14 @@ describe('Render auth component', () => {
   });
 
   it('logout button exists', async () => {
-    const btnLogout = screen.getByText('Logout');
+    const btnLogout = screen.getByText('navbar.logout');
     fireEvent.click(btnLogout);
 
     expect(btnLogout).toBeTruthy();
   });
 
   it('verify session closure with the logout button', async () => {
-    const btnLogout = screen.getByText('Logout');
+    const btnLogout = screen.getByText('navbar.logout');
     fireEvent.click(btnLogout);
 
     expect(routerSpy.navigate).toHaveBeenCalledWith([Routes.login]);
@@ -66,9 +88,3 @@ describe('Render auth component', () => {
     expect(canActivate).toBe(false);
   });
 });
-
-function fakeRouterState(url: string): RouterStateSnapshot {
-  return {
-    url,
-  } as RouterStateSnapshot;
-}

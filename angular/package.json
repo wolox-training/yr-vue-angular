@@ -20,6 +20,8 @@
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "@types/jest": "^28.1.6",
     "cerealizr": "^1.0.1-alpha",
     "jest": "^28.1.3",

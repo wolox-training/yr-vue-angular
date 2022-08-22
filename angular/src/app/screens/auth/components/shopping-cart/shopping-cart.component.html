@@ -12,7 +12,7 @@
       (click)="showCart()"
     />
     <div class="popup-title">
-      Tu carrito de compras
+      {{ 'shopping.title' | translate }}
       <ng-container *ngIf="hasBooks; else elseBook">
         <div class="popup-container" *ngFor="let book of books">
           <div class="popup-content-details">
@@ -31,15 +31,17 @@
         </div>
       </ng-container>
       <ng-template #elseBook>
-        <div>
+        <div class="cart-empty">
           <img
             alt="icon-cart-empty"
             class="popup-empty-img"
             src="assets/cart-empty.png"
           />
-          <span class="popup-empty-title">El carrito está vacío</span>
-          <span class="popup-empty-desciption">
-            Parece que no tienés items en tu carrito de compras.
+          <span class="popup-empty-title">{{
+            'shopping.emptyTitle' | translate
+          }}</span>
+          <span class="popup-empty-desciption"
+            >{{ 'shopping.emptyDescription' | translate }}
           </span>
         </div>
       </ng-template>
