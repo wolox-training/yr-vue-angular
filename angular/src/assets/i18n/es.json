@@ -1,0 +1,19 @@
+{
+  "navbar": {
+    "logout": "Cerrar Sesión"
+  },
+
+  "shopping": {
+    "title": "Tu carrito de compras",
+    "emptyTitle": "El carrito está vacío",
+    "emptyDescription": "Parece que no tienes ítems en tu carrito de compras"
+  },
+
+  "inputs": {
+    "filterBook": "Buscá por título del libro..."
+  },
+
+  "empty": {
+    "books": "No hay registros"
+  }
+}

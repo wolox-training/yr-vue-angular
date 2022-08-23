@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 import { AuthComponent } from './auth.component';
 import { AuthRoutingModule } from './auth-routing.module';
-import { NavbarComponent } from 'src/app/screens/auth/components/navbar/navbar.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { NavbarModule } from './components/navbar/navbar.module';
 
 @NgModule({
-  declarations: [AuthComponent, NavbarComponent, ShoppingCartComponent],
-  imports: [CommonModule, AuthRoutingModule],
+  declarations: [AuthComponent],
+  imports: [CommonModule, AuthRoutingModule, TranslateModule, NavbarModule],
 })
 export class AuthModule {}

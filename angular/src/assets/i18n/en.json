@@ -1,0 +1,19 @@
+{
+  "navbar": {
+    "logout": "Logout"
+  },
+
+  "shopping": {
+    "title": "Your shopping cart",
+    "emptyTitle": "The cart is empty",
+    "emptyDescription": "It seems that you have no items in your shopping cart."
+  },
+
+  "inputs": {
+    "filterBook": "Search by book title..."
+  },
+
+  "empty": {
+    "books": "no records"
+  }
+}

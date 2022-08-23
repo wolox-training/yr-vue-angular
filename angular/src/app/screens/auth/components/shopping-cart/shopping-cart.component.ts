@@ -9,18 +9,18 @@ import { ShoppingCartService } from '../../../../services/shopping-cart.service'
   styleUrls: ['./shopping-cart.component.scss'],
 })
 export class ShoppingCartComponent implements OnInit, OnDestroy {
-  openCart: boolean = false;
+  openCart = false;
   books: IBook[] = [];
   shoppingSubscription!: Subscription;
-  booksCount: number = 0;
+  booksCount = 0;
 
   constructor(public shoppingService: ShoppingCartService) {}
 
   ngOnInit(): void {
     this.shoppingSubscription = this.shoppingService
       .getBooks()
-      .subscribe((response: IBook) => {
-        this.books.push(response);
+      .subscribe((response: IBook[]) => {
+        this.books = response;
         this.booksCount = this.books.length;
       });
   }

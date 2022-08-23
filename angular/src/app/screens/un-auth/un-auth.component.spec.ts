@@ -13,6 +13,12 @@ import { UnAuthGuard } from '../../guards/unauth.guard';
 import { mockToken } from '../../helpers/mocks/mock-token';
 import { UserService } from '../../services/user.service';
 
+function fakeRouterState(url: string): RouterStateSnapshot {
+  return {
+    url,
+  } as RouterStateSnapshot;
+}
+
 describe('Render auth component', () => {
   let routerSpy: any = { navigate: jest.fn() };
   let guard: UnAuthGuard;
@@ -56,9 +62,3 @@ describe('Render auth component', () => {
     expect(routerSpy.navigate).toHaveBeenCalledWith([Routes.books]);
   });
 });
-
-function fakeRouterState(url: string): RouterStateSnapshot {
-  return {
-    url,
-  } as RouterStateSnapshot;
-}

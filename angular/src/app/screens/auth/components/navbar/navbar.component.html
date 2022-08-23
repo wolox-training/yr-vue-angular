@@ -2,6 +2,9 @@
   <img src="assets/logo_full_color.svg" alt="wolox-logo" class="logo" />
   <div class="navbar-options">
     <app-shopping-cart></app-shopping-cart>
-    <button class="nav-title" (click)="logOut()">Logout</button>
+    <button class="nav-title" (click)="logOut()">
+      {{ 'navbar.logout' | translate }}
+    </button>
+    <app-language></app-language>
   </div>
 </div>

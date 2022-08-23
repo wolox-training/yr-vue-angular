@@ -5,7 +5,7 @@
     role="search"
     [(ngModel)]="inputSearch"
     type="search"
-    placeholder="Buscá por título del libro..."
+    [placeholder]="'inputs.filterBook' | translate"
   />
   <img
     class="book-icon-search"
@@ -26,6 +26,6 @@
     ></app-book-card>
   </ng-container>
   <ng-template #elseTemplate>
-    <div class="book-empty">No hay resultados</div>
+    <div class="book-empty">{{ 'empty.books' | translate }}</div>
   </ng-template>
 </div>
