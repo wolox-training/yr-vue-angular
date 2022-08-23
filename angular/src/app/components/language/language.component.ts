@@ -20,7 +20,7 @@ export class LanguageComponent implements OnInit {
     this.changeLanguage();
   }
 
-  changeLanguage() {
+  changeLanguage(): void {
     this.translate.use(this.languageSelected);
   }
 }

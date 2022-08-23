@@ -93,16 +93,16 @@
 }
 
 .popup-empty-title {
+  display: block;
   font-size: $popup-empty-title;
   font-weight: 700;
   height: 39px;
   line-height: 38px;
   margin: 0 0 24px;
-  display: block;
 }
 
-.popup-empty-desciption {
-  font-size: $popup-empty-desciption;
+.popup-empty-description {
+  font-size: $popup-empty-description;
   height: 29px;
   line-height: 28px;
 }

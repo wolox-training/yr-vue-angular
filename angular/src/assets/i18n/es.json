@@ -5,8 +5,8 @@
 
   "shopping": {
     "title": "Tu carrito de compras",
-    "emptyTitle": "El carrito esta vacio",
-    "emptyDescription": "Parece que no tienés items en tu carrito de compras."
+    "emptyTitle": "El carrito está vacío",
+    "emptyDescription": "Parece que no tienes ítems en tu carrito de compras"
   },
 
   "inputs": {
